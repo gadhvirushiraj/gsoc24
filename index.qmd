@@ -1,0 +1,15 @@
+---
+title: "My GSOC Blogs"
+listing:
+  contents:
+    - "posts/*/*.qmd"
+  sort: "date desc"
+  type: default
+  categories: false
+  sort-ui: false
+  filter-ui: false
+page-layout: article
+title-block-banner: true
+---
+
+

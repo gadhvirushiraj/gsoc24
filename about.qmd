@@ -1,0 +1,16 @@
+---
+title: "Rushiraj Gadhvi"
+image: profile.jpg
+about:
+  template: jolla
+  links:
+    - icon: linkedin
+      text: LinkedIn
+      href: https://www.linkedin.com/in/gadhvirushiraj/
+    - icon: github
+      text: Github
+      href: https://github.com/gadhvirushiraj
+
+---
+
+Know more about me, [here](https://gadhvirushiraj.github.io/portfolioME/)

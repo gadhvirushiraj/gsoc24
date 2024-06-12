@@ -1,0 +1,40 @@
+{
+  "posts/post-with-code/index.qmd": {
+    "index.html": "dcee436e"
+  },
+  "posts/welcome/index.qmd": {
+    "index.html": "546b36bd"
+  },
+  "index.qmd": {
+    "index.html": "c14d3371"
+  },
+  "about.qmd": {
+    "about.html": "4f9e4d3b"
+  },
+  "posts/post-with-code copy/index.qmd": {
+    "index.html": "cdb274c1"
+  },
+  "posts/week-1/index.qmd": {
+    "index.html": "7db65f91"
+  },
+  "posts/community-bond/index.qmd": {
+    "index.html": "fe6f5160"
+  },
+  "posts/intro/index.qmd": {
+    "index.html": "12785f3b"
+  },
+  "posts/community-bond copy/index.qmd": {
+    "index.html": "ce248b29"
+  },
+  "posts/week-1/exp_matplot.ipynb": {
+    "exp_matplot.out.ipynb": "8095050f",
+    "exp_matplot-preview.html": "f98eacd4",
+    "exp_matplot.html": "071d3f61"
+  },
+  "posts/week-3/index.qmd": {
+    "index.html": "46514ba8"
+  },
+  "posts/week-2/index.qmd": {
+    "index.html": "7e131045"
+  }
+}

@@ -1,0 +1,33 @@
+---
+title: "Coding Begins! Week#1"
+author: "Rushiraj Gadhvi"
+date: "2024-06-01"
+categories: [gsoc, qutip, code, week#1]
+image: "thumb.png"
+---
+
+## What did I do this week ?
+
+The coding phase for GSOC'24 finally started from 27th May, the goal for the week was to develop a working demo for the matplotlib based renderer. 
+
+### Current LaTeX-Based Visualization:
+Here is an example of a circuit visualized using the current LaTeX-based approach. One thing to note is the placement of the "H" gate. In this visualization, "H" gates can be placed in the same X-position to reduce the circuit's overall size and make it more realistic.
+{{< embed exp_matplot.ipynb#latex-circuit >}}
+
+
+### Matplotlib-Based Renderer Concept Demo:
+I utilized matplotlib's `patches` class utlized for adding different geometric shapes to the fihgre canvas and some other functionalities from `artist`to build the circuit in layer based approach. For the demo, I have implemented only different single qubit gates and CNOT. The code uses a dictionary to keep track of the number of gates placed on a particular wire. If there is no space in the current horizontal layer, the new gate is shifted to the next horizontal layer. This method enables the parallel display of gates, enhancing the visualization's clarity and compactness.
+{{< embed exp_matplot.ipynb#matplotlib-circuit >}}
+
+Ciruit exmaple with more qubits.
+{{< embed exp_matplot.ipynb#matplotlib-circuit-2 >}}
+
+## Issues ?
+- dynamic figure size, adding more qubits messes up aspect ratio
+- enhancing / limiting user customization
+
+## Plan for next week ?
+- refactor the code in proper OOP
+- add more gates
+- make figure size dynamic wrt to addition of qubits 
+- make a color theme
