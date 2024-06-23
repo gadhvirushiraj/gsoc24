@@ -1,0 +1,45 @@
+---
+title: "Week#4"
+author: "Rushiraj Gadhvi"
+date: "2024-06-21"
+categories: [gsoc, qutip, code, week#4]
+image: "week4.png"
+---
+
+## What did I do this week?
+
+![](./week4.png){fig-align="center"}
+
+This week has been productive with several key accomplishments in my project:
+
+1. **Draft PR Submission**Over the past week, most of time was allocated on code clean up making it more readable, removing uneccesary variables etc.
+
+2. **Fixed Circuit-Wire Labelling:** One bug discovered was the plotting was of the text labels was getting cut if long name was selected for a wire label, this issue was fixed.
+
+3. **Multi-Qubit Gate with Multiple Control Rendering** As discussed in the previous meeting to render the the controls from the center, this was tested on matplotlib renderer. Though, the current LaTeX renderer seems to mess things up with multiple controls.
+
+4. **Customization Options:** Added the option to remove gate bulge and introduced a style argument for overall plotting-styling-related customization.
+
+5. **Inclusion of Argumennt in Gate Text:** Incase of a gate taking a argument like the rotation gates, the user can display the text directly in the gate label. Also, a feature was included to round it off to the nearest pi-fraction.
+
+![](./arg-value.png){fig-align="center"}
+
+## Discussion Points
+
+Several topics require further discussion to ensure the project's progress:
+
+- **API Structure for Plotting:** Need to finalize the structure for plotting, especially concerning the relocation of LaTeX code. This is crucial as the making of Jupyter notebook tutorial depends on it.
+
+- **Vertical Height Adjustment:** Considering the necessity of adding an automatic vertical height adjustment for gates/wires to support multiline text.
+
+## Plan for Next Week
+
+To build on this week’s achievements, the plan for next week includes:
+
+- **Next Phase Planning:** Start planning the next phase by exploring different possible approaches for ASCII-based rendering.
+
+- **Polish the PR:** Refine the draft PR based on feedback and further requirements.
+
+- **Bug Fix:** Resolve the issue with connector placement when `bulge=0`.
+
+- **Add Utility Functions:** Enhance the code by adding utility functions.

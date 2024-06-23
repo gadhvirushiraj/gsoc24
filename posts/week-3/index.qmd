@@ -44,4 +44,9 @@ The global-dense feature, specified by the `condense` argument in the `MatRender
 Another important improvement was the addition of connectors for multi-qubit gates. In cases where there are multiple targets of a multi-qubit gate, connectors are added to the gate graphic to identify which wire it is connecting to. This ensures clarity, especially when the gate is drawn over wires it is not connected to. Example can be seen in above "BERKELEY" Gate.
 
 ## Plan for next week ?
-- to be updated after meet
+
+- Add option to display gate argument in label
+- multiline row support for gate label
+- Make a Draft PR
+- Notebook Tutorials 
+- Find / Fix bugs
