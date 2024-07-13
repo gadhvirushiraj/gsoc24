@@ -1,0 +1,87 @@
+---
+title: "Week#5"
+author: "Rushiraj Gadhvi"
+date: "2024-06-27"
+categories: [gsoc, qutip, code, week#5]
+image: "week5.png"
+---
+
+## What did I do this week?
+
+1. **Bugs fix in MatRenderer**\
+Resolved some of the bugs present in `MatRenderer`, specifically the `connection indicators` where not getting rendered properly when bulging of gates was set to zero. 
+
+![](./solved_bulge.png){fig-align="center"}
+
+2. **Exploration for TextRenderer**\
+Another significant area of my work involved the exploration of `TextRenderer`. This phase included experimenting with various approaches to establish an efficient workflow. A critical part of this process was the manual selection and finalization of a specific set of ASCII characters. These characters are integral for accurately representing circuit elements in text form. Drawing inspiration from methodologies used in libraries like Qiskit, I gained valuable insights into optimizing text-based rendering for circuit diagrams.\
+
+For reference, here are some of the ASCII codes and corresponding symbols selected for rendering purposes:
+\
+---
+
+::: {#tbl-panel layout-ncol=3}
+| **ASCII Code**| **Symbol** |
+|------------|--------|
+| 179        | &#9474;  |
+| 180        | &#9508;  |
+| 191        | &#9488;  |
+| 192        | &#9492;  |
+| 193        | &#9516;  |
+| 194        | &#9524;  |
+| 195        | &#9500;  |
+| 196        | &#9472;  |
+
+| **ASCII Code**| **Symbol** |
+|------------|--------|
+| 217        | &#9496;  |
+| 218        | &#9484;  |
+| 186        | &#9553;  |
+| 187        | &#9559;  |
+| 188        | &#9565;  |
+| 200        | &#9562;  |
+| 201        | &#9556;  |
+| 202        | &#9574;  |
+
+| **ASCII Code**| **Symbol** |
+|------------|--------|
+| 203        | &#9577;  |
+| 204        | &#9568;  |
+| 205        | &#9552;  |
+| 206        | &#9571;  |
+| 185        | &#9563;  |
+| 45         | &#45;    |
+| 88         | X        |
+| 254        | &#9608;  |
+:::
+
+\
+**Example of Rendering Style**
+To visualize the rendering style, below are examples of circuit diagrams rendered using our current approach:
+---
+<div style="text-align: center;">
+::: {layout-ncol=1}
+![](./circuit-ex1.png){height=2in}
+![](./circuit-ex2.png){height=2in}
+![](./circuit-ex3.png){height=2in}
+:::
+</div>
+\
+
+
+3. **Finalised on WorkFlow for TextRenderer**\
+As for the finalized workflow, for easy maintainance of code in future. A method to somehow utilize `MatRenderer`'s funciton for the `TextRenderer` would be the optimum solution. This can be achieved by trying to replicate the layer by layer rendering process that was used in `MatRenderer`, but this would need further verififcation (plenty of edge cases are a possibility here). The main issue with this is `MatRenderer` uses `matplotlib`'s feature to renderer objects onto different layers which is not possible in the case of ordered string rendering.
+
+## Points Discussed in Meet
+
+- Finalization of the API structure to streamline functionality.
+- Workflow for Text Renderer, including the idea to create a seperate Base Class for `MatRenderer` and `TextRenderer`.
+- We can improve the `extend_lines()` funtion in `MatRenderer`
+
+## Plan for Next Week
+
+Looking ahead, the following tasks are prioritized for the upcoming week:
+
+- Clean the code, and move latex plotting out of `circuit.py`
+- Transferring LaTeX plotting functionalities out of `circuit.py` for improved code organization.
+- Continuing the implementation and refinement of the text rendering capabilities.
