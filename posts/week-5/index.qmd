@@ -3,7 +3,7 @@ title: "Week#5"
 author: "Rushiraj Gadhvi"
 date: "2024-06-27"
 categories: [gsoc, qutip, code, week#5]
-image: "week5.png"
+image: "circuit-ex1.png"
 ---
 
 ## What did I do this week?
