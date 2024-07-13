@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Rushiraj Gadhvi">
+<meta name="dcterms.date" content="2024-06-27">
 
-<title>blog – My GSOC Blogs</title>
+<title>blog – Week#5</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,24 +25,22 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -68,67 +68,9 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
 
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-fixed fullcontent">
@@ -138,7 +80,7 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">blog</span>
     </a>
   </div>
@@ -149,7 +91,7 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./about.html"> 
+    <a class="nav-link" href="../../about.html"> 
 <span class="menu-text">Rushiraj Gadhvi</span></a>
   </li>  
   <li class="nav-item compact">
@@ -168,14 +110,32 @@ window.Quarto = {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">My GSOC Blogs</h1>
-                      </div>
+      <h1 class="title">Week#5</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">gsoc</div>
+                <div class="quarto-category">qutip</div>
+                <div class="quarto-category">code</div>
+                <div class="quarto-category">week#5</div>
+              </div>
+                  </div>
   </div>
     
   
   <div class="quarto-title-meta">
 
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Rushiraj Gadhvi </p>
+            </div>
+    </div>
       
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">June 27, 2024</p>
+      </div>
+    </div>
     
       
     </div>
@@ -192,214 +152,207 @@ window.Quarto = {
 
 
 
+<section id="what-did-i-do-this-week" class="level2">
+<h2 class="anchored" data-anchor-id="what-did-i-do-this-week">What did I do this week?</h2>
+<ol type="1">
+<li><strong>Bugs fix in MatRenderer</strong><br>
+Resolved some of the bugs present in <code>MatRenderer</code>, specifically the <code>connection indicators</code> where not getting rendered properly when bulging of gates was set to zero.</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./solved_bulge.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+<ol start="2" type="1">
+<li><strong>Exploration for TextRenderer</strong><br>
+Another significant area of my work involved the exploration of <code>TextRenderer</code>. This phase included experimenting with various approaches to establish an efficient workflow. A critical part of this process was the manual selection and finalization of a specific set of ASCII characters. These characters are integral for accurately representing circuit elements in text form. Drawing inspiration from methodologies used in libraries like Qiskit, I gained valuable insights into optimizing text-based rendering for circuit diagrams.<br>
+</li>
+</ol>
+<p>For reference, here are some of the ASCII codes and corresponding symbols selected for rendering purposes:<br>
+</p>
+<hr>
+<div>
+
+</div>
+<div id="tbl-panel" class="quarto-layout-panel anchored" data-layout-ncol="3">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;"><strong>ASCII Code</strong></th>
+<th style="text-align: left;"><strong>Symbol</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">179</td>
+<td style="text-align: left;">│</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">180</td>
+<td style="text-align: left;">┤</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">191</td>
+<td style="text-align: left;">┐</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">192</td>
+<td style="text-align: left;">└</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">193</td>
+<td style="text-align: left;">┬</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">194</td>
+<td style="text-align: left;">┴</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">195</td>
+<td style="text-align: left;">├</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">196</td>
+<td style="text-align: left;">─</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;"><strong>ASCII Code</strong></th>
+<th style="text-align: left;"><strong>Symbol</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">217</td>
+<td style="text-align: left;">┘</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">218</td>
+<td style="text-align: left;">┌</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">186</td>
+<td style="text-align: left;">║</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">187</td>
+<td style="text-align: left;">╗</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">188</td>
+<td style="text-align: left;">╝</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">200</td>
+<td style="text-align: left;">╚</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">201</td>
+<td style="text-align: left;">╔</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">202</td>
+<td style="text-align: left;">╦</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;"><strong>ASCII Code</strong></th>
+<th style="text-align: left;"><strong>Symbol</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">203</td>
+<td style="text-align: left;">╩</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">204</td>
+<td style="text-align: left;">╠</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">205</td>
+<td style="text-align: left;">═</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">206</td>
+<td style="text-align: left;">╣</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">185</td>
+<td style="text-align: left;">╛</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">45</td>
+<td style="text-align: left;">-</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">88</td>
+<td style="text-align: left;">X</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">254</td>
+<td style="text-align: left;">█</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p><br>
+<strong>Example of Rendering Style</strong> To visualize the rendering style, below are examples of circuit diagrams rendered using our current approach:</p>
+<hr>
+<div style="text-align: center;">
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout-ncol="1">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 100.0%;justify-content: flex-start;">
+<p><img src="./circuit-ex1.png" style="height:2in"> <img src="./circuit-ex2.png" style="height:2in"> <img src="./circuit-ex3.png" style="height:2in"></p>
+</div>
+</div>
+</div>
+</div>
+<p><br>
+</p>
+<ol start="3" type="1">
+<li><strong>Finalised on WorkFlow for TextRenderer</strong><br>
+As for the finalized workflow, for easy maintainance of code in future. A method to somehow utilize <code>MatRenderer</code>’s funciton for the <code>TextRenderer</code> would be the optimum solution. This can be achieved by trying to replicate the layer by layer rendering process that was used in <code>MatRenderer</code>, but this would need further verififcation (plenty of edge cases are a possibility here). The main issue with this is <code>MatRenderer</code> uses <code>matplotlib</code>’s feature to renderer objects onto different layers which is not possible in the case of ordered string rendering.</li>
+</ol>
+</section>
+<section id="points-discussed-in-meet" class="level2">
+<h2 class="anchored" data-anchor-id="points-discussed-in-meet">Points Discussed in Meet</h2>
+<ul>
+<li>Finalization of the API structure to streamline functionality.</li>
+<li>Workflow for Text Renderer, including the idea to create a seperate Base Class for <code>MatRenderer</code> and <code>TextRenderer</code>.</li>
+<li>We can improve the <code>extend_lines()</code> funtion in <code>MatRenderer</code></li>
+</ul>
+</section>
+<section id="plan-for-next-week" class="level2">
+<h2 class="anchored" data-anchor-id="plan-for-next-week">Plan for Next Week</h2>
+<p>Looking ahead, the following tasks are prioritized for the upcoming week:</p>
+<ul>
+<li>Clean the code, and move latex plotting out of <code>circuit.py</code></li>
+<li>Transferring LaTeX plotting functionalities out of <code>circuit.py</code> for improved code organization.</li>
+<li>Continuing the implementation and refinement of the text rendering capabilities.</li>
+</ul>
 
 
+</section>
 
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="gsoc,qutip,code,week#5" data-listing-date-sort="1719426600000" data-listing-file-modified-sort="1720890063675" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="627">
-<div class="thumbnail">
-<p><a href="./posts/week-5/index.html" class="no-external"></a></p><a href="./posts/week-5/index.html" class="no-external">
-<p><img loading="lazy" src="./posts/week-5/week5.png" class="thumbnail-image"></p>
-</a><p><a href="./posts/week-5/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/week-5/index.html" class="no-external">Week#5</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/week-5/index.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/week-5/index.html" class="no-external">For reference, here are some of the ASCII codes and corresponding symbols selected for rendering purposes:<br>
-</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/week-5/index.html" class="no-external">
-<div class="listing-date">
-Jun 27, 2024
-</div>
-<div class="listing-author">
-Rushiraj Gadhvi
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-categories="gsoc,qutip,code,week#4" data-listing-date-sort="1718908200000" data-listing-file-modified-sort="1720767722349" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="288">
-<div class="thumbnail">
-<p><a href="./posts/week-4/index.html" class="no-external"></a></p><a href="./posts/week-4/index.html" class="no-external">
-<p><img loading="lazy" src="./posts/week-4/week4.png" class="thumbnail-image"></p>
-</a><p><a href="./posts/week-4/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/week-4/index.html" class="no-external">Week#4</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/week-4/index.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/week-4/index.html" class="no-external">This week has been productive with several key accomplishments in my project:</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/week-4/index.html" class="no-external">
-<div class="listing-date">
-Jun 21, 2024
-</div>
-<div class="listing-author">
-Rushiraj Gadhvi
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-categories="gsoc,qutip,code,week#3" data-listing-date-sort="1718217000000" data-listing-file-modified-sort="1719127475794" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="362">
-<div class="thumbnail">
-<p><a href="./posts/week-3/index.html" class="no-external"></a></p><a href="./posts/week-3/index.html" class="no-external">
-<p><img loading="lazy" src="./posts/week-3/custom-options.png" class="thumbnail-image"></p>
-</a><p><a href="./posts/week-3/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/week-3/index.html" class="no-external">Week#3</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/week-3/index.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/week-3/index.html" class="no-external">Given the lack of direct methods to test the correctness of rendered circuits, I had to employ various combinations and scenarios to identify any breaking points in the code…</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/week-3/index.html" class="no-external">
-<div class="listing-date">
-Jun 13, 2024
-</div>
-<div class="listing-author">
-Rushiraj Gadhvi
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="3" data-categories="gsoc,qutip,code,week#2" data-listing-date-sort="1717871400000" data-listing-file-modified-sort="1719127323520" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="281">
-<div class="thumbnail">
-<p><a href="./posts/week-2/index.html" class="no-external"></a></p><a href="./posts/week-2/index.html" class="no-external">
-<p><img loading="lazy" src="./posts/week-2/thumb.png" class="thumbnail-image"></p>
-</a><p><a href="./posts/week-2/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/week-2/index.html" class="no-external">Week#2</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/week-2/index.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/week-2/index.html" class="no-external">This week, my primary focus was on refactoring and optimizing the code to ensure better performance and readability. In addition, based on our earlier discussions I came up…</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/week-2/index.html" class="no-external">
-<div class="listing-date">
-Jun 9, 2024
-</div>
-<div class="listing-author">
-Rushiraj Gadhvi
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="4" data-categories="gsoc,qutip,code,week#1" data-listing-date-sort="1717180200000" data-listing-file-modified-sort="1719127323519" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="230">
-<div class="thumbnail">
-<p><a href="./posts/week-1/index.html" class="no-external"></a></p><a href="./posts/week-1/index.html" class="no-external">
-<p><img loading="lazy" src="./posts/week-1/thumb.png" class="thumbnail-image"></p>
-</a><p><a href="./posts/week-1/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/week-1/index.html" class="no-external">Coding Begins! Week#1</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/week-1/index.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/week-1/index.html" class="no-external">The coding phase for GSOC’24 finally started from 27th May, the goal for the week was to develop a working demo for the matplotlib based renderer.</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/week-1/index.html" class="no-external">
-<div class="listing-date">
-Jun 1, 2024
-</div>
-<div class="listing-author">
-Rushiraj Gadhvi
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="5" data-categories="gsoc,qutip" data-listing-date-sort="1716575400000" data-listing-file-modified-sort="1719127323515" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="149">
-<div class="thumbnail">
-<p><a href="./posts/community-bond copy/index.html" class="no-external"></a></p><a href="./posts/community-bond copy/index.html" class="no-external">
-<p><img loading="lazy" src="./posts/community-bond copy/thumb.png" class="thumbnail-image"></p>
-</a><p><a href="./posts/community-bond copy/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/community-bond copy/index.html" class="no-external">Community Bonding</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/community-bond copy/index.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/community-bond copy/index.html" class="no-external">During this week, I spent most of my time diving into the QIP repository to understand how everything fits together. I went through the introductory Jupyter notebooks to…</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/community-bond copy/index.html" class="no-external">
-<div class="listing-date">
-May 25, 2024
-</div>
-<div class="listing-author">
-Rushiraj Gadhvi
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="6" data-categories="gsoc,qutip" data-listing-date-sort="1715797800000" data-listing-file-modified-sort="1719127323518" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="421">
-<div class="thumbnail">
-<p><a href="./posts/intro/index.html" class="no-external"></a></p><a href="./posts/intro/index.html" class="no-external">
-<p><img loading="lazy" src="./posts/intro/thumb.jpg" class="thumbnail-image"></p>
-</a><p><a href="./posts/intro/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/intro/index.html" class="no-external">I got selected, Yay !</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/intro/index.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/intro/index.html" class="no-external">I am thrilled to share that I have been selected for Google Summer of Code (GSoC) 2024 @ QuTiP ! This opportunity is a dream come true, and I am excited to dive into this…</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/intro/index.html" class="no-external">
-<div class="listing-date">
-May 16, 2024
-</div>
-<div class="listing-author">
-Rushiraj Gadhvi
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

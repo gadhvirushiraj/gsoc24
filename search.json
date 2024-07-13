@@ -21,32 +21,46 @@
     "text": "What did I do this week?\nDuring this week, I spent most of my time diving into the QIP repository to understand how everything fits together. I went through the introductory Jupyter notebooks to learn the basics of working with QIP Module, such as using different gates, building circuits, and creating custom gates. Further, got my environment all setuped and focused on understaning the current implementation of the Gate Class and how circuits are visualized using LaTeX.\nTried planning a rough sketch how my code should be sequenced so that its more efficient and clean when merged. In addition to this, I revisited my notes on basics of quantum computing, paying special attention to quantum circuits to solidify my understanding more.\nI also did a introductory meet with my mentors, entire QuTiP team and other GSOC’24 participants @ QuTiP.\n\n\nPlan for next week?\nExperiment more, get a sample of visualization working with jupyter notebook with limited features."
   },
   {
-    "objectID": "posts/week-2/index.html",
-    "href": "posts/week-2/index.html",
-    "title": "Week#2",
+    "objectID": "posts/week-5/index.html",
+    "href": "posts/week-5/index.html",
+    "title": "Week#5",
     "section": "",
-    "text": "This week, my primary focus was on refactoring and optimizing the code to ensure better performance and readability. In addition, based on our earlier discussions I came up with a deafult color theme inspired and sampled from QuTiP logo. Color cutomization for gate is also now possible, a new arg. is added to the gate class.\n\n\n\nOne critical issue addressed was the dynamic sizing of figures when including additional qubit lines. Previously, adding more qubit lines caused the aspect ratio of the visualization to become distorted, leading to uneven or disproportionate representations. This issue has been successfully resolved and figures now maintain a consistent and balanced aspect ratio regardless of the number of qubit lines included.\n\n\n\nSignificant progress was made in terms of the renderer’s adaptability. It now supports nearly all the default gates that QIP offers. Additionally, I extended its capabilities to render user’s custom gates. This ensures that users have the flexibility to visualize a wide variety of quantum operations.\n\n\n\nA key update was the incorporation of functionality to visualize classical wires and measurements. Currently, the standard practice of rendering classical wires beneath the qubits has been adopted, although we could add potentially a customization option for user to renderer them above if desired."
+    "text": "Bugs fix in MatRenderer\nResolved some of the bugs present in MatRenderer, specifically the connection indicators where not getting rendered properly when bulging of gates was set to zero.\n\n\n\n\n\n\n\nExploration for TextRenderer\nAnother significant area of my work involved the exploration of TextRenderer. This phase included experimenting with various approaches to establish an efficient workflow. A critical part of this process was the manual selection and finalization of a specific set of ASCII characters. These characters are integral for accurately representing circuit elements in text form. Drawing inspiration from methodologies used in libraries like Qiskit, I gained valuable insights into optimizing text-based rendering for circuit diagrams.\n\n\nFor reference, here are some of the ASCII codes and corresponding symbols selected for rendering purposes:\n\n\n\n\n\n\n\n\n\n\n\nASCII Code\nSymbol\n\n\n\n\n179\n│\n\n\n180\n┤\n\n\n191\n┐\n\n\n192\n└\n\n\n193\n┬\n\n\n194\n┴\n\n\n195\n├\n\n\n196\n─\n\n\n\n\n\n\n\n\nASCII Code\nSymbol\n\n\n\n\n217\n┘\n\n\n218\n┌\n\n\n186\n║\n\n\n187\n╗\n\n\n188\n╝\n\n\n200\n╚\n\n\n201\n╔\n\n\n202\n╦\n\n\n\n\n\n\n\n\nASCII Code\nSymbol\n\n\n\n\n203\n╩\n\n\n204\n╠\n\n\n205\n═\n\n\n206\n╣\n\n\n185\n╛\n\n\n45\n-\n\n\n88\nX\n\n\n254\n█\n\n\n\n\n\n\n\nExample of Rendering Style To visualize the rendering style, below are examples of circuit diagrams rendered using our current approach:\n\n\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\nFinalised on WorkFlow for TextRenderer\nAs for the finalized workflow, for easy maintainance of code in future. A method to somehow utilize MatRenderer’s funciton for the TextRenderer would be the optimum solution. This can be achieved by trying to replicate the layer by layer rendering process that was used in MatRenderer, but this would need further verififcation (plenty of edge cases are a possibility here). The main issue with this is MatRenderer uses matplotlib’s feature to renderer objects onto different layers which is not possible in the case of ordered string rendering."
   },
   {
-    "objectID": "posts/week-2/index.html#what-did-i-do-this-week",
-    "href": "posts/week-2/index.html#what-did-i-do-this-week",
-    "title": "Week#2",
+    "objectID": "posts/week-5/index.html#what-did-i-do-this-week",
+    "href": "posts/week-5/index.html#what-did-i-do-this-week",
+    "title": "Week#5",
     "section": "",
-    "text": "This week, my primary focus was on refactoring and optimizing the code to ensure better performance and readability. In addition, based on our earlier discussions I came up with a deafult color theme inspired and sampled from QuTiP logo. Color cutomization for gate is also now possible, a new arg. is added to the gate class.\n\n\n\nOne critical issue addressed was the dynamic sizing of figures when including additional qubit lines. Previously, adding more qubit lines caused the aspect ratio of the visualization to become distorted, leading to uneven or disproportionate representations. This issue has been successfully resolved and figures now maintain a consistent and balanced aspect ratio regardless of the number of qubit lines included.\n\n\n\nSignificant progress was made in terms of the renderer’s adaptability. It now supports nearly all the default gates that QIP offers. Additionally, I extended its capabilities to render user’s custom gates. This ensures that users have the flexibility to visualize a wide variety of quantum operations.\n\n\n\nA key update was the incorporation of functionality to visualize classical wires and measurements. Currently, the standard practice of rendering classical wires beneath the qubits has been adopted, although we could add potentially a customization option for user to renderer them above if desired."
+    "text": "Bugs fix in MatRenderer\nResolved some of the bugs present in MatRenderer, specifically the connection indicators where not getting rendered properly when bulging of gates was set to zero.\n\n\n\n\n\n\n\nExploration for TextRenderer\nAnother significant area of my work involved the exploration of TextRenderer. This phase included experimenting with various approaches to establish an efficient workflow. A critical part of this process was the manual selection and finalization of a specific set of ASCII characters. These characters are integral for accurately representing circuit elements in text form. Drawing inspiration from methodologies used in libraries like Qiskit, I gained valuable insights into optimizing text-based rendering for circuit diagrams.\n\n\nFor reference, here are some of the ASCII codes and corresponding symbols selected for rendering purposes:\n\n\n\n\n\n\n\n\n\n\n\nASCII Code\nSymbol\n\n\n\n\n179\n│\n\n\n180\n┤\n\n\n191\n┐\n\n\n192\n└\n\n\n193\n┬\n\n\n194\n┴\n\n\n195\n├\n\n\n196\n─\n\n\n\n\n\n\n\n\nASCII Code\nSymbol\n\n\n\n\n217\n┘\n\n\n218\n┌\n\n\n186\n║\n\n\n187\n╗\n\n\n188\n╝\n\n\n200\n╚\n\n\n201\n╔\n\n\n202\n╦\n\n\n\n\n\n\n\n\nASCII Code\nSymbol\n\n\n\n\n203\n╩\n\n\n204\n╠\n\n\n205\n═\n\n\n206\n╣\n\n\n185\n╛\n\n\n45\n-\n\n\n88\nX\n\n\n254\n█\n\n\n\n\n\n\n\nExample of Rendering Style To visualize the rendering style, below are examples of circuit diagrams rendered using our current approach:\n\n\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\nFinalised on WorkFlow for TextRenderer\nAs for the finalized workflow, for easy maintainance of code in future. A method to somehow utilize MatRenderer’s funciton for the TextRenderer would be the optimum solution. This can be achieved by trying to replicate the layer by layer rendering process that was used in MatRenderer, but this would need further verififcation (plenty of edge cases are a possibility here). The main issue with this is MatRenderer uses matplotlib’s feature to renderer objects onto different layers which is not possible in the case of ordered string rendering."
   },
   {
-    "objectID": "posts/week-2/index.html#issues",
-    "href": "posts/week-2/index.html#issues",
-    "title": "Week#2",
-    "section": "Issues ?",
-    "text": "Issues ?\n\nthe gate size should expand incase of custom text, though I havent found a genralized solution which would across different font families\nincorporation of customization options"
+    "objectID": "posts/week-5/index.html#points-discussed-in-meet",
+    "href": "posts/week-5/index.html#points-discussed-in-meet",
+    "title": "Week#5",
+    "section": "Points Discussed in Meet",
+    "text": "Points Discussed in Meet\n\nFinalization of the API structure to streamline functionality.\nWorkflow for Text Renderer, including the idea to create a seperate Base Class for MatRenderer and TextRenderer.\nWe can improve the extend_lines() funtion in MatRenderer"
   },
   {
-    "objectID": "posts/week-2/index.html#plan-for-next-week",
-    "href": "posts/week-2/index.html#plan-for-next-week",
-    "title": "Week#2",
-    "section": "Plan for next week ?",
-    "text": "Plan for next week ?\n\nadd styling dictionary to gate class\nadd fature to make circuit condense\nmaking a draft PR\ncleaning code further\nfix text sizing issue"
+    "objectID": "posts/week-5/index.html#plan-for-next-week",
+    "href": "posts/week-5/index.html#plan-for-next-week",
+    "title": "Week#5",
+    "section": "Plan for Next Week",
+    "text": "Plan for Next Week\nLooking ahead, the following tasks are prioritized for the upcoming week:\n\nClean the code, and move latex plotting out of circuit.py\nTransferring LaTeX plotting functionalities out of circuit.py for improved code organization.\nContinuing the implementation and refinement of the text rendering capabilities."
+  },
+  {
+    "objectID": "posts/week-3/index.html",
+    "href": "posts/week-3/index.html",
+    "title": "Week#3",
+    "section": "",
+    "text": "Given the lack of direct methods to test the correctness of rendered circuits, I had to employ various combinations and scenarios to identify any breaking points in the code or logic. This week, I encountered and resolved two significant issues:\n\nRendering Logic Flaw for Custom Gates with Multiple Control Nodes: I identified a flaw in the rendering logic for custom gates that involved multiple control wires and worked on fixing this issue to ensure proper visualization.\nDynamic Gate Sizing with Text Input: There was a previously mentioned problem with dynamically adjusting gate sizes when text input was involved. This issue has also been resolved, ensuring that gate sizes adjust correctly based on the text they contain.\n\n\n\n\nThe goal for this week was to integrate styling customization with the current gate class and implement the global-dense option to allow users to shrink the size of the circuit.\nCurrently, the gate class accepts a styling dictionary as input with the following customization parameters:\n\ntext: Custom gate label\ncolor: Controls gate background color\nfontsize: Size of the text\nfontcolor: Controls the font color of the text\nfontweight: Controls the weight of the font styles | “bold”, “normal” (default) | custom value\nfontfamily: ‘serif’ | ‘sans-serif’ | ‘cursive’ | ‘fantasy’ | ‘monospace’ (default)\nfontname: Custom font integration (yet to test)\n\nHere is an example of user customization options: \n\n\n\nThe global-dense feature, specified by the condense argument in the MatRenderer class, allows users to shrink the size of the circuit. The images below demonstrate the default setting and the condense = 0.1 setting, respectively:\n \n\n\n\nAnother important improvement was the addition of connectors for multi-qubit gates. In cases where there are multiple targets of a multi-qubit gate, connectors are added to the gate graphic to identify which wire it is connecting to. This ensures clarity, especially when the gate is drawn over wires it is not connected to. Example can be seen in above “BERKELEY” Gate.\n\n\n\n\nAdd option to display gate argument in label\nmultiline row support for gate label\nMake a Draft PR\nNotebook Tutorials\nFind / Fix bugs"
+  },
+  {
+    "objectID": "posts/week-3/index.html#plan-for-next-week",
+    "href": "posts/week-3/index.html#plan-for-next-week",
+    "title": "Week#3",
+    "section": "",
+    "text": "Add option to display gate argument in label\nmultiline row support for gate label\nMake a Draft PR\nNotebook Tutorials\nFind / Fix bugs"
   },
   {
     "objectID": "posts/week-4/index.html",
@@ -77,18 +91,32 @@
     "text": "Plan for Next Week\nTo build on this week’s achievements, the plan for next week includes:\n\nNext Phase Planning: Start planning the next phase by exploring different possible approaches for ASCII-based rendering.\nPolish the PR: Refine the draft PR based on feedback and further requirements.\nBug Fix: Resolve the issue with connector placement when bulge=0.\nAdd Utility Functions: Enhance the code by adding utility functions."
   },
   {
-    "objectID": "posts/week-3/index.html",
-    "href": "posts/week-3/index.html",
-    "title": "Week#3",
+    "objectID": "posts/week-2/index.html",
+    "href": "posts/week-2/index.html",
+    "title": "Week#2",
     "section": "",
-    "text": "Given the lack of direct methods to test the correctness of rendered circuits, I had to employ various combinations and scenarios to identify any breaking points in the code or logic. This week, I encountered and resolved two significant issues:\n\nRendering Logic Flaw for Custom Gates with Multiple Control Nodes: I identified a flaw in the rendering logic for custom gates that involved multiple control wires and worked on fixing this issue to ensure proper visualization.\nDynamic Gate Sizing with Text Input: There was a previously mentioned problem with dynamically adjusting gate sizes when text input was involved. This issue has also been resolved, ensuring that gate sizes adjust correctly based on the text they contain.\n\n\n\n\nThe goal for this week was to integrate styling customization with the current gate class and implement the global-dense option to allow users to shrink the size of the circuit.\nCurrently, the gate class accepts a styling dictionary as input with the following customization parameters:\n\ntext: Custom gate label\ncolor: Controls gate background color\nfontsize: Size of the text\nfontcolor: Controls the font color of the text\nfontweight: Controls the weight of the font styles | “bold”, “normal” (default) | custom value\nfontfamily: ‘serif’ | ‘sans-serif’ | ‘cursive’ | ‘fantasy’ | ‘monospace’ (default)\nfontname: Custom font integration (yet to test)\n\nHere is an example of user customization options: \n\n\n\nThe global-dense feature, specified by the condense argument in the MatRenderer class, allows users to shrink the size of the circuit. The images below demonstrate the default setting and the condense = 0.1 setting, respectively:\n \n\n\n\nAnother important improvement was the addition of connectors for multi-qubit gates. In cases where there are multiple targets of a multi-qubit gate, connectors are added to the gate graphic to identify which wire it is connecting to. This ensures clarity, especially when the gate is drawn over wires it is not connected to. Example can be seen in above “BERKELEY” Gate.\n\n\n\n\nAdd option to display gate argument in label\nmultiline row support for gate label\nMake a Draft PR\nNotebook Tutorials\nFind / Fix bugs"
+    "text": "This week, my primary focus was on refactoring and optimizing the code to ensure better performance and readability. In addition, based on our earlier discussions I came up with a deafult color theme inspired and sampled from QuTiP logo. Color cutomization for gate is also now possible, a new arg. is added to the gate class.\n\n\n\nOne critical issue addressed was the dynamic sizing of figures when including additional qubit lines. Previously, adding more qubit lines caused the aspect ratio of the visualization to become distorted, leading to uneven or disproportionate representations. This issue has been successfully resolved and figures now maintain a consistent and balanced aspect ratio regardless of the number of qubit lines included.\n\n\n\nSignificant progress was made in terms of the renderer’s adaptability. It now supports nearly all the default gates that QIP offers. Additionally, I extended its capabilities to render user’s custom gates. This ensures that users have the flexibility to visualize a wide variety of quantum operations.\n\n\n\nA key update was the incorporation of functionality to visualize classical wires and measurements. Currently, the standard practice of rendering classical wires beneath the qubits has been adopted, although we could add potentially a customization option for user to renderer them above if desired."
   },
   {
-    "objectID": "posts/week-3/index.html#plan-for-next-week",
-    "href": "posts/week-3/index.html#plan-for-next-week",
-    "title": "Week#3",
+    "objectID": "posts/week-2/index.html#what-did-i-do-this-week",
+    "href": "posts/week-2/index.html#what-did-i-do-this-week",
+    "title": "Week#2",
     "section": "",
-    "text": "Add option to display gate argument in label\nmultiline row support for gate label\nMake a Draft PR\nNotebook Tutorials\nFind / Fix bugs"
+    "text": "This week, my primary focus was on refactoring and optimizing the code to ensure better performance and readability. In addition, based on our earlier discussions I came up with a deafult color theme inspired and sampled from QuTiP logo. Color cutomization for gate is also now possible, a new arg. is added to the gate class.\n\n\n\nOne critical issue addressed was the dynamic sizing of figures when including additional qubit lines. Previously, adding more qubit lines caused the aspect ratio of the visualization to become distorted, leading to uneven or disproportionate representations. This issue has been successfully resolved and figures now maintain a consistent and balanced aspect ratio regardless of the number of qubit lines included.\n\n\n\nSignificant progress was made in terms of the renderer’s adaptability. It now supports nearly all the default gates that QIP offers. Additionally, I extended its capabilities to render user’s custom gates. This ensures that users have the flexibility to visualize a wide variety of quantum operations.\n\n\n\nA key update was the incorporation of functionality to visualize classical wires and measurements. Currently, the standard practice of rendering classical wires beneath the qubits has been adopted, although we could add potentially a customization option for user to renderer them above if desired."
+  },
+  {
+    "objectID": "posts/week-2/index.html#issues",
+    "href": "posts/week-2/index.html#issues",
+    "title": "Week#2",
+    "section": "Issues ?",
+    "text": "Issues ?\n\nthe gate size should expand incase of custom text, though I havent found a genralized solution which would across different font families\nincorporation of customization options"
+  },
+  {
+    "objectID": "posts/week-2/index.html#plan-for-next-week",
+    "href": "posts/week-2/index.html#plan-for-next-week",
+    "title": "Week#2",
+    "section": "Plan for next week ?",
+    "text": "Plan for next week ?\n\nadd styling dictionary to gate class\nadd fature to make circuit condense\nmaking a draft PR\ncleaning code further\nfix text sizing issue"
   },
   {
     "objectID": "posts/intro/index.html",
@@ -144,6 +172,6 @@
     "href": "index.html",
     "title": "My GSOC Blogs",
     "section": "",
-    "text": "Week#4\n\n\n\n\n\n\n\n\n\n\n\nJun 21, 2024\n\n\nRushiraj Gadhvi\n\n\n\n\n\n\n\n\n\n\n\n\nWeek#3\n\n\n\n\n\n\n\n\n\n\n\nJun 13, 2024\n\n\nRushiraj Gadhvi\n\n\n\n\n\n\n\n\n\n\n\n\nWeek#2\n\n\n\n\n\n\n\n\n\n\n\nJun 9, 2024\n\n\nRushiraj Gadhvi\n\n\n\n\n\n\n\n\n\n\n\n\nCoding Begins! Week#1\n\n\n\n\n\n\n\n\n\n\n\nJun 1, 2024\n\n\nRushiraj Gadhvi\n\n\n\n\n\n\n\n\n\n\n\n\nCommunity Bonding\n\n\n\n\n\n\n\n\n\n\n\nMay 25, 2024\n\n\nRushiraj Gadhvi\n\n\n\n\n\n\n\n\n\n\n\n\nI got selected, Yay !\n\n\n\n\n\n\n\n\n\n\n\nMay 16, 2024\n\n\nRushiraj Gadhvi\n\n\n\n\n\n\nNo matching items"
+    "text": "Week#5\n\n\n\n\n\n\n\n\n\n\n\nJun 27, 2024\n\n\nRushiraj Gadhvi\n\n\n\n\n\n\n\n\n\n\n\n\nWeek#4\n\n\n\n\n\n\n\n\n\n\n\nJun 21, 2024\n\n\nRushiraj Gadhvi\n\n\n\n\n\n\n\n\n\n\n\n\nWeek#3\n\n\n\n\n\n\n\n\n\n\n\nJun 13, 2024\n\n\nRushiraj Gadhvi\n\n\n\n\n\n\n\n\n\n\n\n\nWeek#2\n\n\n\n\n\n\n\n\n\n\n\nJun 9, 2024\n\n\nRushiraj Gadhvi\n\n\n\n\n\n\n\n\n\n\n\n\nCoding Begins! Week#1\n\n\n\n\n\n\n\n\n\n\n\nJun 1, 2024\n\n\nRushiraj Gadhvi\n\n\n\n\n\n\n\n\n\n\n\n\nCommunity Bonding\n\n\n\n\n\n\n\n\n\n\n\nMay 25, 2024\n\n\nRushiraj Gadhvi\n\n\n\n\n\n\n\n\n\n\n\n\nI got selected, Yay !\n\n\n\n\n\n\n\n\n\n\n\nMay 16, 2024\n\n\nRushiraj Gadhvi\n\n\n\n\n\n\nNo matching items"
   }
 ]
