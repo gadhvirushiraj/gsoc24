@@ -11,6 +11,8 @@ image: "thumb.png"
 ### Code Refactoring and Color Theme Selection
 This week, my primary focus was on refactoring and optimizing the code to ensure better performance and readability. In addition, based on our earlier discussions I came up with a deafult color theme inspired and sampled from QuTiP logo. Color cutomization for gate is also now possible, a new arg. is added to the gate class. 
 
+![](./thumb.png){width=5in fig-align="center"}
+
 ### Fixed Dynamic Figure Sizing
 One critical issue addressed was the dynamic sizing of figures when including additional qubit lines. Previously, adding more qubit lines caused the aspect ratio of the visualization to become distorted, leading to uneven or disproportionate representations. This issue has been successfully resolved and figures now maintain a consistent and balanced aspect ratio regardless of the number of qubit lines included.
 
