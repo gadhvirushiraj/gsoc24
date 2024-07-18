@@ -10,15 +10,15 @@ image: "week4.png"
 
 This week has been productive with several key accomplishments in my project:
 
-1. **Draft PR Submission**Over the past week, most of time was allocated on code clean up making it more readable, removing uneccesary variables etc.
+1. **Draft PR Submission** Over the past week, most of time was allocated on code clean up making it more readable, removing uneccesary variables etc.
 
-2. **Fixed Circuit-Wire Labelling:** One bug discovered was the plotting was of the text labels was getting cut if long name was selected for a wire label, this issue was fixed.
+2. **Fixed Circuit-Wire Labelling** One bug discovered was the plotting was of the text labels was getting cut if long name was selected for a wire label, this issue was fixed.
 
 ![](./week4.png){fig-align="center"}
 
 3. **Multi-Qubit Gate with Multiple Control Rendering** As discussed in the previous meeting to render the the controls from the center, this was tested on matplotlib renderer. Though, the current LaTeX renderer seems to mess things up with multiple controls.
 
-4. **Customization Options:** Added the option to remove gate bulge and introduced a style argument for overall plotting-styling-related customization.
+4. **Customization Options** Added the option to remove gate bulge and introduced a style argument for overall plotting-styling-related customization.
 
 ![](./bulge0.png){fig-align="center"}
 

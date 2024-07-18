@@ -1,0 +1,47 @@
+---
+title: "Week#8"
+author: "Rushiraj Gadhvi"
+date: "2024-18-07"
+categories: [gsoc, qutip, code, week#8]
+image: "week8.png"
+---
+This week I tackled a implementation of Base Renderer Class and  minor changes/TODOs for the MatRenderer. Here's a quick rundown:
+
+1. **Styling Dictionary for Circuit Level Customization**
+
+    With numerous parameters, it was unclear which ones could be user-modified and which ones couldn't. I initially tried using DataClass to address this, but creating a new instance of a separate class every time for customization felt cumbersome. Thus, I opted for a straightforward styling dictionary as input for circuit customization options. Although this approach is simpler, it's not ideal since code editors like VSCode can't autocomplete it directly. Perhaps utilizing kwargs would be a better alternative.
+
+2. **Layer Alignment Option**
+
+    The `align_layer` option was added to the styling to align the layers during rendering. The images below demonstrate the difference when using this option and without it, respectively.
+
+    <br>
+    with `align_layer`
+    ![With Layer Alignment](./with-align.png){fig-alt="With Layer Alignment" fig-align="center"}
+
+    without `align_layer`
+    ![Without Layer Alignment](./without-align.png){fig-alt="Without Layer Alignment" fig-align="center"}
+
+3. **Miscellaneous Additions to MatRenderer**
+
+    - Introduced a `zorder dict` to maintain a cleaner organization of different layers for gates, wires, bridges, nodes, connectors, labels, etc.
+
+    - Added a `save` function to store images in .png, .svg, and other formats supported by matplotlib.
+
+    - Added a `title` option to provide a title for the circuit.
+
+    - Introduced a `custom ax` input for users to render images on custom axes, allowing for side-by-side rendering with other plots.
+
+    ![](./custom_ax.png){width=70% fig-align="center"}
+
+4. **Completed Shifting LaTeX Code**
+
+    The shifting of `latex_circuit.py` to `texrenderer.py` has been addressed. Modifications were also made to `test_circuit.py` according to the changes, and a base template for the final rendering API was created. The [PR](https://github.com/qutip/qutip-qip/pull/241) for this change has been merged.
+
+5. **Base Renderer Class**
+
+    A separate Base Class for the renderer was created to inherit and reuse common utility functions. This change promotes cleaner code architecture by centralizing shared functionalities, reducing redundancy, and facilitating easier maintenance. Currently, two functions have been shifted.
+
+    - **`_get_xskip` Function**: This function calculates the horizontal skip value between elements, ensuring consistent spacing in the rendered circuit. By moving it to the Base Class, we can reuse it across different renderer subclasses without duplication.
+    
+    - **`_manage_layers` Function**: This function manages the different rendering layers (e.g., gates, wires, nodes), ensuring they are drawn in the correct order. Placing it in the Base Class allows all renderers to leverage this organized layer management.
