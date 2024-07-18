@@ -3,7 +3,7 @@ title: "Week#8"
 author: "Rushiraj Gadhvi"
 date: "2024-18-07"
 categories: [gsoc, qutip, code, week#8]
-image: "week8.png"
+image: "with-align.png"
 ---
 This week I tackled a implementation of Base Renderer Class and  minor changes/TODOs for the MatRenderer. Here's a quick rundown:
 
