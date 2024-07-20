@@ -5,6 +5,8 @@ date: "2024-07-18"
 categories: [gsoc, qutip, code, week#8]
 image: "with-align.png"
 ---
+## This Week
+
 This week I tackled a implementation of Base Renderer Class and  minor changes/TODOs for the MatRenderer. Here's a quick rundown:
 
 1. **Styling Dictionary for Circuit Level Customization**
@@ -45,3 +47,9 @@ This week I tackled a implementation of Base Renderer Class and  minor changes/T
     - **`_get_xskip` Function**: This function calculates the horizontal skip value between elements, ensuring consistent spacing in the rendered circuit. By moving it to the Base Class, we can reuse it across different renderer subclasses without duplication.
     
     - **`_manage_layers` Function**: This function manages the different rendering layers (e.g., gates, wires, nodes), ensuring they are drawn in the correct order. Placing it in the Base Class allows all renderers to leverage this organized layer management.
+
+## Plan for Next Week
+
+- Convert and develop the existing text-renderer functionality into class-format
+- Add Multi-Qubit support for the text-renderer
+- Add the centering of gates in layer-alignment option `align_option` inside MatRenderer
