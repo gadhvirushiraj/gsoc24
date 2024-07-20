@@ -1,7 +1,7 @@
 ---
 title: "Halfway! Week#6-7"
 author: "Rushiraj Gadhvi"
-date: "2024-10-07"
+date: "2024-07-10"
 categories: [gsoc, qutip, code, week#6, week#7]
 image: "week6-7.png"
 ---
