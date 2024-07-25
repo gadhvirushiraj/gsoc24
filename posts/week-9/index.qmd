@@ -4,10 +4,10 @@ author: "Rushiraj Gadhvi"
 date: "2024-07-25"
 categories: [gsoc, qutip, code, week#9]
 image: "./multiqubit3.png"
+
+description: "This week, the TextRenderer module was developed to render both single-qubit and multi-qubit gates. Additionally, three new color themes were added to MatRenderer, and user customization input was improved by converting the style dictionary to a StyleConfig dataclass for better organization. And bug fixes."
 ---
 ## This Week
-
-This week, the TextRenderer module was developed to render both single-qubit and multi-qubit gates. Additionally, three new color themes were added to MatRenderer, and user customization input was improved by converting the style dictionary to a StyleConfig dataclass for better organization. And bug fixes.
 
 1. **Implementation of TextRenderer**
     
