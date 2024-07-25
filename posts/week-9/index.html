@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Rushiraj Gadhvi">
-<meta name="dcterms.date" content="2024-07-10">
+<meta name="dcterms.date" content="2024-07-25">
 
-<title>blog – Halfway! Week#6-7</title>
+<title>blog – Week#9</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -144,13 +144,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Halfway! Week#6-7</h1>
+      <h1 class="title">Week#9</h1>
                                 <div class="quarto-categories">
                 <div class="quarto-category">gsoc</div>
                 <div class="quarto-category">qutip</div>
                 <div class="quarto-category">code</div>
-                <div class="quarto-category">week#6</div>
-                <div class="quarto-category">week#7</div>
+                <div class="quarto-category">week#9</div>
               </div>
                   </div>
   </div>
@@ -168,7 +167,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">July 10, 2024</p>
+        <p class="date">July 25, 2024</p>
       </div>
     </div>
     
@@ -187,84 +186,90 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<p>This week marks the halfway point of GSOC 2024, and the project has successfully met its midway goal of completing the development of the <code>Matplotlib Renderer: MatRenderer</code>. Moving forward, my primary focus will be on the <code>Text Based Renderer</code>, which is the major goal for the second half of the project, along with some additional functionalities.</p>
-<p>It has been an amazing experience contributing to GSOC'24 at QuTiP so far, and I am excited to continue making progress.</p>
-<section id="what-did-i-do-this-week" class="level2">
-<h2 class="anchored" data-anchor-id="what-did-i-do-this-week">What did I do this week?</h2>
+<section id="this-week" class="level2">
+<h2 class="anchored" data-anchor-id="this-week">This Week</h2>
 <ol type="1">
-<li><p><strong>Moving LaTeX plotting</strong></p>
-<p>Most of my effort week-6 went into understanding and moving the LaTeX code to its separate file from <code>circuit.py</code> to <code>texrenderer.py</code>. A separate class, <code>TeXRenderer</code>, was also created to further organize the code.</p></li>
-<li><p><strong>Updating the Wire Rendering of MatRenderer</strong></p>
-<p>In Week-6, I also updated the <code>extende_wire()</code> function for wire rendering. This change eliminated overlaping wire renderings and calls for extension of wires after each layer rendering. Now, the entire wire is only drawn at the end, after all the gates are rendered.</p></li>
-<li><p><strong>Built a proof of Concept for Text Rendering</strong></p>
-<p>As previously mentioned, using functions from the MatRenderer class for the text renderer is the best approach for future code maintenance. During week-7, I developed a basic prototype to show how this concept works. At the moment, this prototype is implemented for the Single Qubit Gate. It effectively reuses the layer management functions in MatRenderer, specifically the <code>manage_layers()</code> and <code>x_skip()</code> functions.</p></li>
-</ol>
-<section id="circuit-representation-example" class="level4">
-<h4 class="anchored" data-anchor-id="circuit-representation-example"><strong>Circuit Representation Example</strong></h4>
+<li><p><strong>Implementation of TextRenderer</strong></p>
+<p>This week, primary focus has been on building the TextRenderer module. The module now successfully renders both single-qubit and multi-qubit gates. At the moment, the TextRenderer operates independently, but next step it will be integrating it with the <code>Base-Class Renderer</code>.</p>
+<p>The rendering format follows a layer-by-layer approach. As we process each gate, we aim to place them as close to each other as possible while maintaining a clear layer structure. This method ensures that the rendered output is easy to understand. This is also the same methodology that was used in <code>MatRenderer</code>.</p>
+<p>The rendered gates are stored as a list of strings, divided into three parts: <code>top</code>, <code>middle</code>, and <code>bottom</code>. Each part represents a different section of the gate, making it easier to manage.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>{</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    top<span class="sc">:</span> [render <span class="cf">for</span> the top of the <span class="dv">1</span>st wire, <span class="dv">2</span>nd wire, <span class="dv">3</span>rd wire ...],</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    mid<span class="sc">:</span> [render <span class="cf">for</span> the middle of the <span class="dv">1</span>st wire, <span class="dv">2</span>nd wire, <span class="dv">3</span>rd wire ...],</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    bot<span class="sc">:</span> [render <span class="cf">for</span> the bottom of the <span class="dv">1</span>st wire, <span class="dv">2</span>nd wire, <span class="dv">3</span>rd wire ...],</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="better-examples" class="level4">
-<h4 class="anchored" data-anchor-id="better-examples"><strong>Better Examples</strong></h4>
-<p><strong>Example-1</strong></p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>qc <span class="ot">=</span> <span class="fu">QubitCircuit</span>(<span class="dv">2</span>)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qc.add_gate</span>(<span class="st">"H"</span>, <span class="at">targets=</span>[<span class="dv">0</span>])</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">qc.add_gate</span>(<span class="st">"RZ"</span>, <span class="at">targets=</span>[<span class="dv">1</span>], <span class="at">arg_value=</span><span class="fl">0.1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>       ┌───┐        </span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>q0 <span class="sc">:</span>───┤ H ├───</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>       └───┘      </span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>       ┌────┐       </span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>q2 <span class="sc">:</span>───┤ RZ ├── </span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>       └────┘    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><em>This would be stored as</em></p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>{</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    top<span class="sc">:</span> [<span class="st">"       ┌───┐   "</span>, <span class="st">"       ┌────┐  "</span>],</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    mid<span class="sc">:</span> [<span class="st">"q0 :───┤ H ├───"</span>, <span class="st">"q2 :───┤ RZ ├──"</span>],</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    bot<span class="sc">:</span> [<span class="st">"       └───┘   "</span>, <span class="st">"       └────┘  "</span>],</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>}      </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<hr>
-<p><strong>Example 2</strong></p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>qc <span class="ot">=</span> <span class="fu">QubitCircuit</span>(<span class="dv">1</span>)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qc.add_gate</span>(<span class="st">"H"</span>, <span class="at">targets=</span>[<span class="dv">0</span>])</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">qc.add_gate</span>(<span class="st">"H"</span>, <span class="at">targets=</span>[<span class="dv">0</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>       ┌───┐  ┌───┐ </span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>q0 <span class="sc">:</span>───┤ H ├──┤ H ├─</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>       └───┘  └───┘ </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><em>The layer increment would look like,</em></p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># STEP 1</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>{</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    top<span class="sc">:</span> [<span class="st">"      "</span>],</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    mid<span class="sc">:</span> [<span class="st">"q0 :──"</span>],</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    bot<span class="sc">:</span> [<span class="st">"      "</span>]</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>}     </span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="co"># STEP 2</span></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>{</span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    top<span class="sc">:</span> [<span class="st">"       ┌───┐ "</span>],</span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    mid<span class="sc">:</span> [<span class="st">"q0 :───┤ H ├─"</span>],</span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>    bot<span class="sc">:</span> [<span class="st">"       └───┘ "</span>]</span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>} </span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="co"># STEP 1</span></span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>{</span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>    top<span class="sc">:</span> [<span class="st">"       ┌───┐  ┌───┐ "</span>],</span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>    mid<span class="sc">:</span> [<span class="st">"q0 :───┤ H ├──┤ H ├─"</span>],</span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>    bot<span class="sc">:</span> [<span class="st">"       └───┘  └───┘ "</span>]</span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>} </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-</section>
-<section id="plan-for-next-week" class="level2">
-<h2 class="anchored" data-anchor-id="plan-for-next-week">Plan for Next Week</h2>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    top<span class="sc">:</span> [render str <span class="cf">for</span> the top of the <span class="dv">1</span>st wire, <span class="dv">2</span>nd wire, <span class="dv">3</span>rd wire ...],</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    mid<span class="sc">:</span> [render str <span class="cf">for</span> the middle of the <span class="dv">1</span>st wire, <span class="dv">2</span>nd wire, <span class="dv">3</span>rd wire ...],</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    bot<span class="sc">:</span> [render str <span class="cf">for</span> the bottom of the <span class="dv">1</span>st wire, <span class="dv">2</span>nd wire, <span class="dv">3</span>rd wire ...],</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ol>
 <ul>
-<li>Develop the base class for both <code>MatRenderer</code> and <code>TextRenderer</code>.</li>
-<li>Implement tests for <code>MatRenderer</code>.</li>
-<li>Add alignment options for gate layers to ensure gates in a layer are centered relative to each other.</li>
-<li>Investigate and implement multi-qubit gate support in the text renderer.</li>
-<li>Finalize moving code from <code>latex_circuit.py</code> to <code>texrenderer.py</code>.</li>
-<li>Organize fixed constants in <code>MatRenderer</code> using a style dictionary or data class.</li>
+<li><strong>MultiQubit Gate Rendering</strong></li>
 </ul>
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./multiqubit1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="500"></p>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./multiqubit2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="500"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p>As shown in the figure below, if a gate spans qubits that have not been used as targets or controls, it does not render connections to those wires.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./multiqubit3.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="500"></p>
+</figure>
+</div>
+<ul>
+<li><strong>SingleQubit Gate Rendering</strong></li>
+</ul>
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./single-qubit1.png" class="quarto-figure quarto-figure-center figure-img" height="200"></p>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./single-qubit2.png" class="quarto-figure quarto-figure-center figure-img" height="200"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<ol start="2" type="1">
+<li><p><strong>Addition of new color-theme</strong></p>
+<p>Included three new color themes to MatRenderer:</p>
+<ul>
+<li><p><strong>Light</strong></p>
+<p><img src="./light-theme.png" class="img-fluid"></p></li>
+<li><p><strong>Dark</strong></p>
+<p><img src="./dark-theme.png" class="img-fluid"></p></li>
+<li><p><strong>Modern</strong></p>
+<p><img src="./modern-theme.png" class="img-fluid"></p></li>
+</ul></li>
+<li><p><strong>Implemented Dataclass for MatRenderer</strong></p>
+<p>Last week, to handle user customization input <code>style</code> dictionary was implemented, which was converted to a <code>StyleConfig</code> dataclass. This change made our code cleaner and more organized by effectively separating customization parameters from constants.</p></li>
+<li><p><strong>Bugfix</strong></p>
+<p>Fixed, the bug spotted by Neill during rendring trotter-simulation-circuit.</p>
+<p><img src="./bug-fix.png" class="img-fluid"></p></li>
+</ol>
 
 
 </section>
