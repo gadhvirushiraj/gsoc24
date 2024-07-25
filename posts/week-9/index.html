@@ -8,6 +8,7 @@
 
 <meta name="author" content="Rushiraj Gadhvi">
 <meta name="dcterms.date" content="2024-07-25">
+<meta name="description" content="This week, the TextRenderer module was developed to render both single-qubit and multi-qubit gates. Additionally, three new color themes were added to MatRenderer, and user customization input was improved by converting the style dictionary to a StyleConfig dataclass for better organization. And bug fixes.">
 
 <title>blog – Week#9</title>
 <style>
@@ -145,7 +146,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
       <h1 class="title">Week#9</h1>
-                                <div class="quarto-categories">
+                  <div>
+        <div class="description">
+          This week, the TextRenderer module was developed to render both single-qubit and multi-qubit gates. Additionally, three new color themes were added to MatRenderer, and user customization input was improved by converting the style dictionary to a StyleConfig dataclass for better organization. And bug fixes.
+        </div>
+      </div>
+                          <div class="quarto-categories">
                 <div class="quarto-category">gsoc</div>
                 <div class="quarto-category">qutip</div>
                 <div class="quarto-category">code</div>
@@ -188,7 +194,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="this-week" class="level2">
 <h2 class="anchored" data-anchor-id="this-week">This Week</h2>
-<p>This week, the TextRenderer module was developed to render both single-qubit and multi-qubit gates. Additionally, three new color themes were added to MatRenderer, and user customization input was improved by converting the style dictionary to a StyleConfig dataclass for better organization. And bug fixes.</p>
 <ol type="1">
 <li><p><strong>Implementation of TextRenderer</strong></p>
 <p>This week, primary focus has been on building the TextRenderer module. The module now successfully renders both single-qubit and multi-qubit gates. At the moment, the TextRenderer operates independently, but next step it will be integrating it with the <code>Base-Class Renderer</code>.</p>
