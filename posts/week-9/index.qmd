@@ -1,0 +1,74 @@
+---
+title: "Week#9"
+author: "Rushiraj Gadhvi"
+date: "2024-07-25"
+categories: [gsoc, qutip, code, week#9]
+image: "./multiqubit3.png"
+---
+## This Week
+
+1. **Implementation of TextRenderer**
+    
+   This week, primary focus has been on building the TextRenderer module. The module now successfully renders both single-qubit and multi-qubit gates. At the moment, the TextRenderer operates independently, but next step it will be integrating it with the `Base-Class Renderer`.
+
+    The rendering format follows a layer-by-layer approach. As we process each gate, we aim to place them as close to each other as possible while maintaining a clear layer structure. This method ensures that the rendered output is easy to understand. This is also the same methodology that was used in `MatRenderer`.
+
+    The rendered gates are stored as a list of strings, divided into three parts: `top`, `middle`, and `bottom`. Each part represents a different section of the gate, making it easier to manage.
+
+    ```r
+    {
+        top: [render str for the top of the 1st wire, 2nd wire, 3rd wire ...],
+        mid: [render str for the middle of the 1st wire, 2nd wire, 3rd wire ...],
+        bot: [render str for the bottom of the 1st wire, 2nd wire, 3rd wire ...],
+    }
+    ```
+
+- **MultiQubit Gate Rendering**
+
+::: {layout-ncol=2}
+![](./multiqubit1.png){width=500 fig-align="center"}
+
+![](./multiqubit2.png){width=500 fig-align="center"}
+:::
+
+As shown in the figure below, if a gate spans qubits that have not been used as targets or controls, it does not render connections to those wires.
+
+![](./multiqubit3.png){width=500 fig-align="center"}
+
+
+- **SingleQubit Gate Rendering**
+
+::: {layout-ncol=2}
+![](./single-qubit1.png){height=200 fig-align="center"}
+
+![](./single-qubit2.png){height=200 fig-align="center"}
+:::
+
+
+    
+
+2. **Addition of new color-theme**
+
+    Included three new color themes to MatRenderer:
+
+    - **Light**
+
+        ![](./light-theme.png)
+
+    - **Dark**
+
+        ![](./dark-theme.png)
+
+    - **Modern**
+
+        ![](./modern-theme.png)
+
+3. **Implemented Dataclass for MatRenderer**
+
+    Last week, to handle user customization input `style` dictionary was implemented, which was converted to a `StyleConfig` dataclass. This change made our code cleaner and more organized by effectively separating customization parameters from constants.
+
+4. **Bugfix**
+
+    Fixed, the bug spotted by Neill during rendring trotter-simulation-circuit.
+
+    ![](./bug-fix.png)
