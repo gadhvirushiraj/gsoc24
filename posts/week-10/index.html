@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Rushiraj Gadhvi">
-<meta name="dcterms.date" content="2024-07-25">
+<meta name="dcterms.date" content="2024-08-01">
 
-<title>blog – Week#9</title>
+<title>blog – Week#10</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -144,12 +144,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Week#9</h1>
+      <h1 class="title">Week#10</h1>
                                 <div class="quarto-categories">
                 <div class="quarto-category">gsoc</div>
                 <div class="quarto-category">qutip</div>
                 <div class="quarto-category">code</div>
-                <div class="quarto-category">week#9</div>
+                <div class="quarto-category">week#10</div>
               </div>
                   </div>
   </div>
@@ -167,7 +167,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">July 25, 2024</p>
+        <p class="date">August 1, 2024</p>
       </div>
     </div>
     
@@ -186,98 +186,69 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<p>This week, the TextRenderer module was developed to render both single-qubit and multi-qubit gates. Additionally, three new color themes were added to MatRenderer, and user customization input was improved by converting the style dictionary to a StyleConfig dataclass for better organization. And bug fixes.</p>
 <section id="this-week" class="level2">
 <h2 class="anchored" data-anchor-id="this-week">This Week</h2>
+<p>This week, I focused primarily on further developing the TextRenderer and addressing the main issues that arose from last week’s work.</p>
 <ol type="1">
-<li><p><strong>Implementation of TextRenderer</strong></p>
-<p>This week, primary focus has been on building the TextRenderer module. The module now successfully renders both single-qubit and multi-qubit gates. At the moment, the TextRenderer operates independently, but next step it will be integrating it with the <code>Base-Class Renderer</code>.</p>
-<p>The rendering format follows a layer-by-layer approach. As we process each gate, we aim to place them as close to each other as possible while maintaining a clear layer structure. This method ensures that the rendered output is easy to understand. This is also the same methodology that was used in <code>MatRenderer</code>.</p>
-<p>The rendered gates are stored as a list of strings, divided into three parts: <code>top</code>, <code>middle</code>, and <code>bottom</code>. Each part represents a different section of the gate, making it easier to manage.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>{</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    top<span class="sc">:</span> [render str <span class="cf">for</span> the top of the <span class="dv">1</span>st wire, <span class="dv">2</span>nd wire, <span class="dv">3</span>rd wire ...],</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    mid<span class="sc">:</span> [render str <span class="cf">for</span> the middle of the <span class="dv">1</span>st wire, <span class="dv">2</span>nd wire, <span class="dv">3</span>rd wire ...],</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    bot<span class="sc">:</span> [render str <span class="cf">for</span> the bottom of the <span class="dv">1</span>st wire, <span class="dv">2</span>nd wire, <span class="dv">3</span>rd wire ...],</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-</ol>
-<ul>
-<li><strong>MultiQubit Gate Rendering</strong></li>
-</ul>
-<div>
-
-</div>
-<div class="quarto-layout-panel" data-layout-ncol="2">
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="./multiqubit1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="500"></p>
-</figure>
-</div>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="./multiqubit2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="500"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-<p>As shown in the figure below, if a gate spans qubits that have not been used as targets or controls, it does not render connections to those wires.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="./multiqubit3.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="500"></p>
-</figure>
-</div>
-<ul>
-<li><strong>SingleQubit Gate Rendering</strong></li>
-</ul>
-<div>
-
-</div>
-<div class="quarto-layout-panel" data-layout-ncol="2">
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="./single-qubit1.png" class="quarto-figure quarto-figure-center figure-img" height="200"></p>
-</figure>
-</div>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="./single-qubit2.png" class="quarto-figure quarto-figure-center figure-img" height="200"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-<ol start="2" type="1">
-<li><p><strong>Addition of new color-theme</strong></p>
-<p>Included three new color themes to MatRenderer:</p>
-<ul>
-<li><p><strong>Light</strong></p>
-<p><img src="./light-theme.png" class="img-fluid"></p></li>
-<li><p><strong>Dark</strong></p>
-<p><img src="./dark-theme.png" class="img-fluid"></p></li>
-<li><p><strong>Modern</strong></p>
-<p><img src="./modern-theme.png" class="img-fluid"></p></li>
-</ul></li>
-<li><p><strong>Implemented Dataclass for MatRenderer</strong></p>
-<p>Last week, to handle user customization input <code>style</code> dictionary was implemented, which was converted to a <code>StyleConfig</code> dataclass. This change made our code cleaner and more organized by effectively separating customization parameters from constants.</p></li>
-<li><p><strong>Bugfix</strong></p>
-<p>Fixed, the bug spotted by Neill during rendring trotter-simulation-circuit.</p>
-<p><img src="./bug-fix.png" class="img-fluid"></p></li>
+<li><p><strong>Fix Cross Qubit Wire Connection</strong></p>
+<p>Last week, I faced a challenge with the TextRenderer not being able to render cross-wire connections. This week, I resolved the issue, and now the TextRenderer can successfully handle Cross Qubit Connections. Additionally, I added a SWAP gate with distinct rendering and its also able now render classical wires.</p>
+<p><strong>Determines the nearest side of the gate frame to insert the “┬” section for making a connection.</strong></p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>              ┌────┐   </span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>q1 <span class="sc">:</span>──────────┤ CX ├───</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>              └──┬─┘   </span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>       ┌───┐     │     </span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>q0 <span class="sc">:</span>───┤ H ├─────▇─────</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>       └───┘       </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>                      ┌───┐  ┌───┐   </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>q1 <span class="sc">:</span>─────────────▇────┤ H ├──┤ H ├───</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>                 │    └───┘  └───┘   </span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>       ┌───┐  ┌──┴─┐                 </span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>q0 <span class="sc">:</span>───┤ H ├──┤ CX ├─────────────────</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>       └───┘  └────┘  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Multiple Nodes</strong></p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>q3 <span class="sc">:</span>────────────────────▇───────</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>                        │       </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>                        │       </span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>q2 <span class="sc">:</span>────────────────────▇───────</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>                        │       </span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>       ┌────────┐  ┌────┴───┐   </span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>q1 <span class="sc">:</span>───┤        ├──┤        ├───</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>       │        │  │        │   </span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>       │        │  │        │   </span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>q0 <span class="sc">:</span>───┤ CTRLRX ├──┤ CTRLRX ├───</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>       └────────┘  └────────┘   </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Complex Circuit Example</strong></p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>                                              ┌──────────┐                                          </span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>q3 <span class="sc">:</span>────────────────────────────────────  ╳ ──┤          ├───────▇───────────────────────  ╳ ─  ╳ ──</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>                                          │   │          │       │                         │    │   </span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>       ┌───┐                              │   │          │  ┌────┴────┐                    │    │   </span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>q2 <span class="sc">:</span>───┤ X ├────────────────────────────  │ ─ │          │ ─┤         ├──────────────────  │ ─  │ ──</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>       └───┘                              │   │          │  │         │                    │    │   </span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>                               ┌──────┐   │   │          │  │         │  ┌────┐  ┌─────┐   │    │   </span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>q1 <span class="sc">:</span>─────────────────────▇─────┤ CNOT ├─  │ ─ │          │ ─┤ FREDKIN ├──┤ CX ├──┤ CRX ├─  │ ─  │ ──</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>                         │     └───┬──┘   │   │          │  └─────────┘  └──┬─┘  └──┬──┘   │    │   </span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>       ┌───┐  ┌───┐  ┌───┴──┐      │      │   │          │                  │       │      │    │   </span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>q0 <span class="sc">:</span>───┤ H ├──┤ H ├──┤ CNOT ├──────▇────  ╳ ──┤ BERKELEY ├──────────────────▇───────▇────  ╳ ─  ╳ ──</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>       └───┘  └───┘  └──────┘                 └──────────┘                                          </span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>c0 <span class="sc">:</span>═════════════════════════════════════════════════════════════════════════════════════════════════</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>c1 <span class="sc">:</span>═════════════════════════════════════════════════════════════════════════════════════════════════</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p><strong>Cleaning TextRenderer Code</strong></p>
+<p>The TextRenderer relies on numerous if-else conditions for handling various scenarios, so it’s crucial to keep the code as clean and readable as possible. Alongside adding new functionality, I’m also ensuring that redundant code is eliminated to enhance efficiency. I am continually refactoring the code to streamline these conditional statements, which improves overall performance and reduces potential errors. Currently, most of the codebase is well-documented with comprehensive docstrings, aiding in better understanding and maintainability.</p></li>
+<li><p><strong>Implementation of Suggestions</strong></p>
+<p>The MatRenderer is nearing the final review phase, with edits made according to the suggested changes. There are still a few uncertainties that will be addressed in the upcoming meeting before final implementation.</p></li>
 </ol>
 </section>
 <section id="plan-for-next-week" class="level2">
 <h2 class="anchored" data-anchor-id="plan-for-next-week">Plan for Next Week</h2>
 <ul>
-<li>Make Progress with <code>TextRenderer</code>, specilly fix control / target node rendering</li>
-<li>Add more gates: <code>CNOT</code>, <code>SWAP</code>, <code>TOFFOLI</code></li>
-<li>Implement suggested chabges in <code>MatRenderer</code> PR</li>
+<li>Prepare a draft pull request for <code>TextRenderer</code></li>
+<li>Implement measurement functionality in <code>TextRenderer</code></li>
+<li>Complete and finalize the <code>MatRenderer</code> pull request</li>
+<li>Add docstrings for styling arguments in <code>MatRenderer</code></li>
+<li>Develop and add tests for <code>TextRenderer</code></li>
 </ul>
 
 
