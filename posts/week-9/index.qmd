@@ -4,9 +4,11 @@ author: "Rushiraj Gadhvi"
 date: "2024-07-25"
 categories: [gsoc, qutip, code, week#9]
 image: "./multiqubit3.png"
-
-description: "This week, the TextRenderer module was developed to render both single-qubit and multi-qubit gates. Additionally, three new color themes were added to MatRenderer, and user customization input was improved by converting the style dictionary to a StyleConfig dataclass for better organization. And bug fixes."
 ---
+
+This week, the TextRenderer module was developed to render both single-qubit and multi-qubit gates. Additionally, three new color themes were added to MatRenderer, and user customization input was improved by converting the style dictionary to a StyleConfig dataclass for better organization. And bug fixes.
+
+
 ## This Week
 
 1. **Implementation of TextRenderer**
@@ -74,3 +76,10 @@ As shown in the figure below, if a gate spans qubits that have not been used as 
     Fixed, the bug spotted by Neill during rendring trotter-simulation-circuit.
 
     ![](./bug-fix.png)
+
+
+## Plan for Next Week
+
+- Make Progress with `TextRenderer`, specilly fix control / target node rendering
+- Add more gates: `CNOT`, `SWAP`, `TOFFOLI`
+- Implement suggested chabges in `MatRenderer` PR

@@ -1,0 +1,89 @@
+---
+title: "Week#10"
+author: "Rushiraj Gadhvi"
+date: "2024-08-01"
+categories: [gsoc, qutip, code, week#10]
+image: "w.png"
+---
+## This Week
+
+This week, I focused primarily on further developing the TextRenderer and addressing the main issues that arose from last week's work.
+
+1. **Fix Cross Qubit Wire Connection**
+
+    Last week, I faced a challenge with the TextRenderer not being able to render cross-wire connections. This week, I resolved the issue, and now the TextRenderer can successfully handle Cross Qubit Connections. Additionally, I added a SWAP gate with distinct rendering and its also able now render classical wires.
+
+    **Determines the nearest side of the gate frame to insert the "┬" section for making a connection.**
+
+    ```r
+                  ┌────┐   
+    q1 :──────────┤ CX ├───
+                  └──┬─┘   
+           ┌───┐     │     
+    q0 :───┤ H ├─────▇─────
+           └───┘       
+    ```
+
+    ```r      
+                          ┌───┐  ┌───┐   
+    q1 :─────────────▇────┤ H ├──┤ H ├───
+                     │    └───┘  └───┘   
+           ┌───┐  ┌──┴─┐                 
+    q0 :───┤ H ├──┤ CX ├─────────────────
+           └───┘  └────┘  
+    ```
+
+    **Multiple Nodes**
+
+    ```r                             
+    q3 :────────────────────▇───────
+                            │       
+                            │       
+    q2 :────────────────────▇───────
+                            │       
+           ┌────────┐  ┌────┴───┐   
+    q1 :───┤        ├──┤        ├───
+           │        │  │        │   
+           │        │  │        │   
+    q0 :───┤ CTRLRX ├──┤ CTRLRX ├───
+           └────────┘  └────────┘   
+    ```
+
+    **Complex Circuit Example**
+
+    ```r
+                                                  ┌──────────┐                                          
+    q3 :────────────────────────────────────  ╳ ──┤          ├───────▇───────────────────────  ╳ ─  ╳ ──
+                                              │   │          │       │                         │    │   
+           ┌───┐                              │   │          │  ┌────┴────┐                    │    │   
+    q2 :───┤ X ├────────────────────────────  │ ─ │          │ ─┤         ├──────────────────  │ ─  │ ──
+           └───┘                              │   │          │  │         │                    │    │   
+                                   ┌──────┐   │   │          │  │         │  ┌────┐  ┌─────┐   │    │   
+    q1 :─────────────────────▇─────┤ CNOT ├─  │ ─ │          │ ─┤ FREDKIN ├──┤ CX ├──┤ CRX ├─  │ ─  │ ──
+                             │     └───┬──┘   │   │          │  └─────────┘  └──┬─┘  └──┬──┘   │    │   
+           ┌───┐  ┌───┐  ┌───┴──┐      │      │   │          │                  │       │      │    │   
+    q0 :───┤ H ├──┤ H ├──┤ CNOT ├──────▇────  ╳ ──┤ BERKELEY ├──────────────────▇───────▇────  ╳ ─  ╳ ──
+           └───┘  └───┘  └──────┘                 └──────────┘                                          
+                                                                                                        
+    c0 :═════════════════════════════════════════════════════════════════════════════════════════════════
+                                                                                                        
+                                                                                                        
+    c1 :═════════════════════════════════════════════════════════════════════════════════════════════════
+    ```
+
+2. **Cleaning TextRenderer Code**
+
+    The TextRenderer relies on numerous if-else conditions for handling various scenarios, so it's crucial to keep the code as clean and readable as possible. Alongside adding new functionality, I'm also ensuring that redundant code is eliminated to enhance efficiency. I am continually refactoring the code to streamline these conditional statements, which improves overall performance and reduces potential errors. Currently, most of the codebase is well-documented with comprehensive docstrings, aiding in better understanding and maintainability. 
+
+3. **Implementation of Suggestions**
+
+    The MatRenderer is nearing the final review phase, with edits made according to the suggested changes. There are still a few uncertainties that will be addressed in the upcoming meeting before final implementation.
+
+   
+## Plan for Next Week
+
+- Prepare a draft pull request for `TextRenderer`
+- Implement measurement functionality in `TextRenderer`
+- Complete and finalize the `MatRenderer` pull request
+- Add docstrings for styling arguments in `MatRenderer`
+- Develop and add tests for `TextRenderer`
