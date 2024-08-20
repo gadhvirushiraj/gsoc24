@@ -82,4 +82,4 @@ As shown in the figure below, if a gate spans qubits that have not been used as 
 
 - Make Progress with `TextRenderer`, specilly fix control / target node rendering
 - Add more gates: `CNOT`, `SWAP`, `TOFFOLI`
-- Implement suggested chabges in `MatRenderer` PR
+- Implement suggested changes in `MatRenderer` PR

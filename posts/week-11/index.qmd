@@ -1,0 +1,74 @@
+---
+title: "Week#11"
+author: "Rushiraj Gadhvi"
+date: "2024-08-08"
+categories: [gsoc, qutip, code, week#11]
+image: "week-11.png"
+---
+
+This week was highly productive as I concentrated on refining the TextRenderer, implementing multiple improvements, and resolving key challenges from the previous week's work. I also added new test cases to ensure better coverage and drafted a PR to consolidate these updates.
+
+## This Week
+
+1. **Fix Rendering Issue with Measurement**
+
+    Last week, I faced a challenge with the TextRenderer not being able to render measurements correclty. This week, I resolved the issue, and now the TextRenderer can successfully handle Measurement rendering in all positions.
+
+    ```r      
+              ┌───┐             ┌───────┐ 
+       q2 :───┤ H ├─────────────┤       ├───
+              └───┘             │       │ 
+              ┌───┐  ┌───────┐  │       │ 
+       q1 :───┤ H ├──┤       ├──┤ ISWAP ├───
+              └───┘  │       │  └───────┘ 
+              ┌───┐  │       │  ┌───┐ 
+       q0 :───┤ H ├──┤ ISWAP ├──┤ M ├───────
+              └───┘  └───────┘  └─╥─┘ 
+                                  ║   
+       c0 :═══════════════════════╩═════════
+    ```
+
+    **Complex Circuit Example**
+
+    ```r
+                                               ┌──────────┐                                                         ┌────────┐  ┌───────┐ 
+        q3 :───────────────────────────────╳───┤          ├───────▇────────────────────────────────╳────────────────┤ CPHASE ├──┤       ├──────────
+                                           │   │          │       │                                │                └────┬───┘  │       │ 
+               ┌───┐                       │   │          │  ┌────┴────┐                           │   ┌─────────┐       │      │       │ 
+        q2 :───┤ X ├───────────────────────│── │          │ ─┤         ├───────────────────────────│───┤ TOFFOLI ├───────▇───── │       │ ─────────
+               └───┘                       │   │          │  │         │                           │   └────┬────┘              │       │ 
+                                ┌──────┐   │   │          │  │         │  ┌────┐  ┌─────┐          │        │                   │       │  ┌───┐ 
+        q1 :──────────────▇─────┤ CNOT ├───│── │          │ ─┤ FREDKIN ├──┤ CX ├──┤ CRX ├──────────│────────▇───────────────────┤ ISWAP ├──┤ M ├───
+                          │     └───┬──┘   │   │          │  └─────────┘  └──┬─┘  └──┬──┘          │        │                   └───────┘  └─╥─┘ 
+               ┌───┐  ┌───┴──┐      │      │   │          │                  │       │     ┌───┐   │        │                                ║   
+        q0 :───┤ H ├──┤ CNOT ├──────▇──────╳───┤ BERKELEY ├──────────────────▇───────▇─────┤ M ├───╳────────▇────────────────────────────────║─────
+               └───┘  └──────┘                 └──────────┘                                └─╥─┘                                             ║   
+                                                                                             ║                                               ║   
+        c1 :═════════════════════════════════════════════════════════════════════════════════║═══════════════════════════════════════════════╩═════
+                                                                                             ║                                                   
+                                                                                             ║   
+        c0 :═════════════════════════════════════════════════════════════════════════════════╩═════════════════════════════════════════════════════
+ 
+    ```
+2. **Formulation of Testcases for TextRenderer**
+
+	Test cases have been implemented to validate the output integrity of the text renderer. Additionally, maintaining layer integrity is essential, as misalignment would possibly major issue incases of incorrect rendering. I am still exploring ideas on how to develop a test case for this.
+
+3. **Miscellaneous**
+
+	**Merged MatRenderer PR :** \
+	All the suggested changes were made and the [PR](https://github.com/qutip/qutip-qip/pull/239) was merged in QIP master branch. 
+
+	**TextRenderer Draft PR :** \
+	The TextRenderer code underwent further refactoring and cleanup, and a [Draft PR](https://github.com/qutip/qutip-qip/pull/244) has been submitted.
+
+	**Addition of Docstring for StyleConfig Dataclass** \
+	The MatRenderer offers a wide range of customization options, and the arguments for each of these options have been documented and included in the docstring.
+
+   
+## Plan for Next Week
+
+- Merge the Base Renderer from the current Draft PR
+- Ensure compatibility of the Base Renderer with MatRenderer
+- Ensure compatibility of the Base Renderer with TextRenderer
+- Incorporate the suggested improvements into the Draft PR
