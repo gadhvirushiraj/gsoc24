@@ -83,7 +83,7 @@ This week, I focused primarily on further developing the TextRenderer and addres
 ## Plan for Next Week
 
 - Prepare a draft pull request for `TextRenderer`
-- Fix Implementation of measurement rendering in `TextRenderer`
+- Implement measurement functionality in `TextRenderer`
 - Complete and finalize the `MatRenderer` pull request
 - Add docstrings for styling arguments in `MatRenderer`
 - Develop and add tests for `TextRenderer`
