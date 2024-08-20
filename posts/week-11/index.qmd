@@ -56,16 +56,28 @@ This week was highly productive as I concentrated on refining the TextRenderer, 
 
 3. **Miscellaneous**
 
-	**Merged MatRenderer PR :** \
+
+	- **Merged MatRenderer PR :** \
 	All the suggested changes were made and the [PR](https://github.com/qutip/qutip-qip/pull/239) was merged in QIP master branch. 
 
-	**TextRenderer Draft PR :** \
+	- **TextRenderer Draft PR :** \
 	The TextRenderer code underwent further refactoring and cleanup, and a [Draft PR](https://github.com/qutip/qutip-qip/pull/244) has been submitted.
 
-	**Addition of Docstring for StyleConfig Dataclass** \
+	- **Addition of Docstring for StyleConfig Dataclass** \
 	The MatRenderer offers a wide range of customization options, and the arguments for each of these options have been documented and included in the docstring.
 
-   
+
+4. **Fixing Gap Rendering with Multiqubit Gates**
+
+       Previous Rendering of MultiQubit Gates vs Corrected Rendering of MultiQubit Gates 
+
+::: {layout-ncol=2}
+![](./pre-version.png){height=200 fig-align="center"}
+
+![](./new-version.png){height=200 fig-align="center"}
+:::
+
+
 ## Plan for Next Week
 
 - Merge the Base Renderer from the current Draft PR
