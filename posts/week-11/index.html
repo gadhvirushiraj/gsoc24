@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Rushiraj Gadhvi">
-<meta name="dcterms.date" content="2024-08-01">
+<meta name="dcterms.date" content="2024-08-08">
 
-<title>blog – Week#10</title>
+<title>blog – Week#11</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -144,12 +144,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Week#10</h1>
+      <h1 class="title">Week#11</h1>
                                 <div class="quarto-categories">
                 <div class="quarto-category">gsoc</div>
                 <div class="quarto-category">qutip</div>
                 <div class="quarto-category">code</div>
-                <div class="quarto-category">week#10</div>
+                <div class="quarto-category">week#11</div>
               </div>
                   </div>
   </div>
@@ -167,7 +167,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">August 1, 2024</p>
+        <p class="date">August 8, 2024</p>
       </div>
     </div>
     
@@ -186,69 +186,84 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
+<p>This week was highly productive as I concentrated on refining the TextRenderer, implementing multiple improvements, and resolving key challenges from the previous week’s work. I also added new test cases to ensure better coverage and drafted a PR to consolidate these updates.</p>
 <section id="this-week" class="level2">
 <h2 class="anchored" data-anchor-id="this-week">This Week</h2>
-<p>This week, I focused primarily on further developing the TextRenderer and addressing the main issues that arose from last week’s work.</p>
 <ol type="1">
-<li><p><strong>Fix Cross Qubit Wire Connection</strong></p>
-<p>Last week, I faced a challenge with the TextRenderer not being able to render cross-wire connections. This week, I resolved the issue, and now the TextRenderer can successfully handle Cross Qubit Connections. Additionally, I added a SWAP gate with distinct rendering and its also able now render classical wires.</p>
-<p><strong>Determines the nearest side of the gate frame to insert the “┬” section for making a connection.</strong></p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>              ┌────┐   </span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>q1 <span class="sc">:</span>──────────┤ CX ├───</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>              └──┬─┘   </span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>       ┌───┐     │     </span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>q0 <span class="sc">:</span>───┤ H ├─────▇─────</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>       └───┘       </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>                      ┌───┐  ┌───┐   </span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>q1 <span class="sc">:</span>─────────────▇────┤ H ├──┤ H ├───</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>                 │    └───┘  └───┘   </span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>       ┌───┐  ┌──┴─┐                 </span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>q0 <span class="sc">:</span>───┤ H ├──┤ CX ├─────────────────</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>       └───┘  └────┘  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><strong>Multiple Nodes</strong></p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>q3 <span class="sc">:</span>────────────────────▇───────</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>                        │       </span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>                        │       </span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>q2 <span class="sc">:</span>────────────────────▇───────</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>                        │       </span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>       ┌────────┐  ┌────┴───┐   </span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>q1 <span class="sc">:</span>───┤        ├──┤        ├───</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>       │        │  │        │   </span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>       │        │  │        │   </span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>q0 <span class="sc">:</span>───┤ CTRLRX ├──┤ CTRLRX ├───</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>       └────────┘  └────────┘   </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<li><p><strong>Fix Rendering Issue with Measurement</strong></p>
+<p>Last week, I faced a challenge with the TextRenderer not being able to render measurements correclty. This week, I resolved the issue, and now the TextRenderer can successfully handle Measurement rendering in all positions.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>          ┌───┐             ┌───────┐ </span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>   q2 <span class="sc">:</span>───┤ H ├─────────────┤       ├───</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>          └───┘             │       │ </span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>          ┌───┐  ┌───────┐  │       │ </span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>   q1 <span class="sc">:</span>───┤ H ├──┤       ├──┤ ISWAP ├───</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>          └───┘  │       │  └───────┘ </span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>          ┌───┐  │       │  ┌───┐ </span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>   q0 <span class="sc">:</span>───┤ H ├──┤ ISWAP ├──┤ M ├───────</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>          └───┘  └───────┘  └─╥─┘ </span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>                              ║   </span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>   c0 <span class="sc">:</span>═══════════════════════╩═════════</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Complex Circuit Example</strong></p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>                                              ┌──────────┐                                          </span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>q3 <span class="sc">:</span>────────────────────────────────────  ╳ ──┤          ├───────▇───────────────────────  ╳ ─  ╳ ──</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>                                          │   │          │       │                         │    │   </span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>       ┌───┐                              │   │          │  ┌────┴────┐                    │    │   </span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>q2 <span class="sc">:</span>───┤ X ├────────────────────────────  │ ─ │          │ ─┤         ├──────────────────  │ ─  │ ──</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>       └───┘                              │   │          │  │         │                    │    │   </span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>                               ┌──────┐   │   │          │  │         │  ┌────┐  ┌─────┐   │    │   </span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>q1 <span class="sc">:</span>─────────────────────▇─────┤ CNOT ├─  │ ─ │          │ ─┤ FREDKIN ├──┤ CX ├──┤ CRX ├─  │ ─  │ ──</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>                         │     └───┬──┘   │   │          │  └─────────┘  └──┬─┘  └──┬──┘   │    │   </span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>       ┌───┐  ┌───┐  ┌───┴──┐      │      │   │          │                  │       │      │    │   </span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>q0 <span class="sc">:</span>───┤ H ├──┤ H ├──┤ CNOT ├──────▇────  ╳ ──┤ BERKELEY ├──────────────────▇───────▇────  ╳ ─  ╳ ──</span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>       └───┘  └───┘  └──────┘                 └──────────┘                                          </span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>c0 <span class="sc">:</span>═════════════════════════════════════════════════════════════════════════════════════════════════</span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>c1 <span class="sc">:</span>═════════════════════════════════════════════════════════════════════════════════════════════════</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li><p><strong>Cleaning TextRenderer Code</strong></p>
-<p>The TextRenderer relies on numerous if-else conditions for handling various scenarios, so it’s crucial to keep the code as clean and readable as possible. Alongside adding new functionality, I’m also ensuring that redundant code is eliminated to enhance efficiency. I am continually refactoring the code to streamline these conditional statements, which improves overall performance and reduces potential errors. Currently, most of the codebase is well-documented with comprehensive docstrings, aiding in better understanding and maintainability.</p></li>
-<li><p><strong>Implementation of Suggestions</strong></p>
-<p>The MatRenderer is nearing the final review phase, with edits made according to the suggested changes. There are still a few uncertainties that will be addressed in the upcoming meeting before final implementation.</p></li>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>                                           ┌──────────┐                                                         ┌────────┐  ┌───────┐ </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    q3 <span class="sc">:</span>───────────────────────────────╳───┤          ├───────▇────────────────────────────────╳────────────────┤ CPHASE ├──┤       ├──────────</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>                                       │   │          │       │                                │                └────┬───┘  │       │ </span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>           ┌───┐                       │   │          │  ┌────┴────┐                           │   ┌─────────┐       │      │       │ </span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    q2 <span class="sc">:</span>───┤ X ├───────────────────────│── │          │ ─┤         ├───────────────────────────│───┤ TOFFOLI ├───────▇───── │       │ ─────────</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>           └───┘                       │   │          │  │         │                           │   └────┬────┘              │       │ </span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>                            ┌──────┐   │   │          │  │         │  ┌────┐  ┌─────┐          │        │                   │       │  ┌───┐ </span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    q1 <span class="sc">:</span>──────────────▇─────┤ CNOT ├───│── │          │ ─┤ FREDKIN ├──┤ CX ├──┤ CRX ├──────────│────────▇───────────────────┤ ISWAP ├──┤ M ├───</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>                      │     └───┬──┘   │   │          │  └─────────┘  └──┬─┘  └──┬──┘          │        │                   └───────┘  └─╥─┘ </span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>           ┌───┐  ┌───┴──┐      │      │   │          │                  │       │     ┌───┐   │        │                                ║   </span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    q0 <span class="sc">:</span>───┤ H ├──┤ CNOT ├──────▇──────╳───┤ BERKELEY ├──────────────────▇───────▇─────┤ M ├───╳────────▇────────────────────────────────║─────</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>           └───┘  └──────┘                 └──────────┘                                └─╥─┘                                             ║   </span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>                                                                                         ║                                               ║   </span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    c1 <span class="sc">:</span>═════════════════════════════════════════════════════════════════════════════════║═══════════════════════════════════════════════╩═════</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>                                                                                         ║                                                   </span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>                                                                                         ║   </span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>    c0 <span class="sc">:</span>═════════════════════════════════════════════════════════════════════════════════╩═════════════════════════════════════════════════════</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p><strong>Formulation of Testcases for TextRenderer</strong></p>
+<p>Test cases have been implemented to validate the output integrity of the text renderer. Additionally, maintaining layer integrity is essential, as misalignment would possibly major issue incases of incorrect rendering. I am still exploring ideas on how to develop a test case for this.</p></li>
+<li><p><strong>Miscellaneous</strong></p>
+<ul>
+<li><p><strong>Merged MatRenderer PR :</strong><br>
+All the suggested changes were made and the <a href="https://github.com/qutip/qutip-qip/pull/239">PR</a> was merged in QIP master branch.</p></li>
+<li><p><strong>TextRenderer Draft PR :</strong><br>
+The TextRenderer code underwent further refactoring and cleanup, and a <a href="https://github.com/qutip/qutip-qip/pull/244">Draft PR</a> has been submitted.</p></li>
+<li><p><strong>Addition of Docstring for StyleConfig Dataclass</strong><br>
+The MatRenderer offers a wide range of customization options, and the arguments for each of these options have been documented and included in the docstring.</p></li>
+</ul></li>
+<li><p><strong>Fixing Gap Rendering with Multiqubit Gates</strong></p>
+<pre><code>Previous Rendering of MultiQubit Gates vs Corrected Rendering of MultiQubit Gates </code></pre></li>
 </ol>
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./pre-version.png" class="quarto-figure quarto-figure-center figure-img" height="200"></p>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./new-version.png" class="quarto-figure quarto-figure-center figure-img" height="200"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
 </section>
 <section id="plan-for-next-week" class="level2">
 <h2 class="anchored" data-anchor-id="plan-for-next-week">Plan for Next Week</h2>
 <ul>
-<li>Prepare a draft pull request for <code>TextRenderer</code></li>
-<li>Fix Implementation of measurement rendering in <code>TextRenderer</code></li>
-<li>Complete and finalize the <code>MatRenderer</code> pull request</li>
-<li>Add docstrings for styling arguments in <code>MatRenderer</code></li>
-<li>Develop and add tests for <code>TextRenderer</code></li>
+<li>Merge the Base Renderer from the current Draft PR</li>
+<li>Ensure compatibility of the Base Renderer with MatRenderer</li>
+<li>Ensure compatibility of the Base Renderer with TextRenderer</li>
+<li>Incorporate the suggested improvements into the Draft PR</li>
 </ul>
 
 
