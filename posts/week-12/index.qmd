@@ -1,0 +1,46 @@
+---
+title: "Week#12"
+author: "Rushiraj Gadhvi"
+date: "2024-08-16"
+categories: [gsoc, qutip, code, week#12]
+image: "test-meme.jpeg"
+---
+
+This week brought significant progress with the successful merging of the BaseRenderer for unified rendering logic. We ensured full compatibility of both MatRenderer and TextRenderer with the new BaseRenderer, streamlining our codebase. Explored test cases option for MatRenderer.
+
+## This Week
+
+1. **Merged BaseRenderer**
+
+   The BaseRenderer was successfully merged into the main branch. This merger is a major step towards unifying the rendering logic, making it easier to maintain and extend in future updates.
+
+2. **Compatibility of other Renderers with BaseRenderer**
+
+   Significant work was done to ensure that both MatRenderer and TextRenderer are fully compatible with the newly integrated BaseRenderer. This effort involved revisiting the existing code, refactoring where necessary, and ensuring that all features work seamlessly across different rendering contexts.
+
+3. **Added more test cases**
+
+   To ensure the robustness of the recent changes, additional test cases were written and integrated into our test suite. These tests cover a wide range of scenarios, ensuring that the BaseRenderer, along with its compatible renderers, performs as expected across various use cases.
+
+4. **Explored Different Test Cases for MatRenderer**
+
+	We investigated various methods for testing matplotlib-plotted figures. Three main approaches were considered:
+	- *Just Check for Errors:* 
+
+		Simply execute the plotting code and pass the test if no errors or warnings are raised. This is the bare minimum test we can perform.
+
+	- *Image Comparison:*
+
+		Save a correct plot and compare the generated plot against it, allowing for some inaccuracy using matplotlib testing function's fetaure `tolerance`. Negatives of storing multiple images, dimension challenges, extension challenges.
+
+	- *Manual Comparison:*
+
+		Compare the generated plot with manually constructed ones using matplotlib's low-level interfaces like patches and draw lines.
+
+
+## Plan for Next Week
+
+- Incorporate the suggested improvements into the Draft PR
+- Make Progress on Notebook
+- Add Documentation in the same PR
+- Add test cases for MatRenderer to improve coverage
