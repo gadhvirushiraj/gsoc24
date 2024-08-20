@@ -77,95 +77,11 @@
     "text": "Plan for Next Week\n\nMake Progress with TextRenderer, specilly fix control / target node rendering\nAdd more gates: CNOT, SWAP, TOFFOLI\nImplement suggested chabges in MatRenderer PR"
   },
   {
-    "objectID": "posts/intro/index.html",
-    "href": "posts/intro/index.html",
-    "title": "I got selected, Yay !",
+    "objectID": "posts/community-bond copy/index.html",
+    "href": "posts/community-bond copy/index.html",
+    "title": "Community Bonding",
     "section": "",
-    "text": "I am thrilled to share that I have been selected for Google Summer of Code (GSoC) 2024 @ QuTiP ! This opportunity is a dream come true, and I am excited to dive into this enriching experience full of learning. This series of blogs will consist of my weekly progress on the project, the hiccups I encounter along the way, how I solve them, and my plans for the upcoming week. In this introductory blog, I will go through the details of the project and objectives."
-  },
-  {
-    "objectID": "posts/intro/index.html#project",
-    "href": "posts/intro/index.html#project",
-    "title": "I got selected, Yay !",
-    "section": "Project",
-    "text": "Project\nThe project I will be working on is titled “QuTiP: Enhancing Quantum Circuit Visualization”.\n\nProblem Statement QuTiP offers a wide range of tools and functions for constructing and manipulating quantum states and operators, including a module for constructing quantum circuits and simulation using basic and custom gates, known as QuTiP-QIP. However, while QuTiP’s circuit visualization capabilities currently rely on LaTeX and ImageMagick to display the circuits, which can be cumbersome for users and require additional dependencies. This project seeks to generate an eye-appealing and accurate circuit rendering module without using external dependency.\nObjectives\n\nDevelop Matplotlib based Renderer\nDevelop an ASCII text-based rendering module for command-line interactions\nImplementing a Circuit Renderer Selector between multiple rendering options\n\nMentors\n\nBoxi Li\nNeill Lambert\nAlex Pitchford\nSimon Cross"
-  },
-  {
-    "objectID": "posts/intro/index.html#why-the-project-matters",
-    "href": "posts/intro/index.html#why-the-project-matters",
-    "title": "I got selected, Yay !",
-    "section": "Why the project matters ?",
-    "text": "Why the project matters ?\nThis project is important because it addresses the usability challenges faced by QuTiP users when visualizing quantum circuits. By eliminating the need for external dependencies such as LaTeX and ImageMagick, the new rendering modules will simplify the installation and setup process for users. This will make QuTiP more accessible and user-friendly, particularly for those who may not be familiar with setting up these additional tools.\nAdditionally, the introduction of a Matplotlib-based renderer will enhance the visual appeal of quantum circuit diagrams, making it easier for researchers and developers to interpret and share their work. The ASCII text-based renderer will provide a lightweight and efficient option for command-line interactions, ensuring that users have a versatile set of tools to suit their different working environments.\nBy providing a Circuit Renderer Selector, users will have the flexibility to choose the most suitable rendering method for their needs, enhancing their overall experience with QuTiP. Ultimately, this project will enable users to visualize quantum circuits more efficiently and effectively, facilitating better understanding and communication of quantum algorithms and operations."
-  },
-  {
-    "objectID": "posts/week-2/index.html",
-    "href": "posts/week-2/index.html",
-    "title": "Week#2",
-    "section": "",
-    "text": "This week, my primary focus was on refactoring and optimizing the code to ensure better performance and readability. In addition, based on our earlier discussions I came up with a deafult color theme inspired and sampled from QuTiP logo. Color cutomization for gate is also now possible, a new arg. is added to the gate class.\n\n\n\n\n\n\n\n\nOne critical issue addressed was the dynamic sizing of figures when including additional qubit lines. Previously, adding more qubit lines caused the aspect ratio of the visualization to become distorted, leading to uneven or disproportionate representations. This issue has been successfully resolved and figures now maintain a consistent and balanced aspect ratio regardless of the number of qubit lines included.\n\n\n\nSignificant progress was made in terms of the renderer’s adaptability. It now supports nearly all the default gates that QIP offers. Additionally, I extended its capabilities to render user’s custom gates. This ensures that users have the flexibility to visualize a wide variety of quantum operations.\n\n\n\nA key update was the incorporation of functionality to visualize classical wires and measurements. Currently, the standard practice of rendering classical wires beneath the qubits has been adopted, although we could add potentially a customization option for user to renderer them above if desired."
-  },
-  {
-    "objectID": "posts/week-2/index.html#what-did-i-do-this-week",
-    "href": "posts/week-2/index.html#what-did-i-do-this-week",
-    "title": "Week#2",
-    "section": "",
-    "text": "This week, my primary focus was on refactoring and optimizing the code to ensure better performance and readability. In addition, based on our earlier discussions I came up with a deafult color theme inspired and sampled from QuTiP logo. Color cutomization for gate is also now possible, a new arg. is added to the gate class.\n\n\n\n\n\n\n\n\nOne critical issue addressed was the dynamic sizing of figures when including additional qubit lines. Previously, adding more qubit lines caused the aspect ratio of the visualization to become distorted, leading to uneven or disproportionate representations. This issue has been successfully resolved and figures now maintain a consistent and balanced aspect ratio regardless of the number of qubit lines included.\n\n\n\nSignificant progress was made in terms of the renderer’s adaptability. It now supports nearly all the default gates that QIP offers. Additionally, I extended its capabilities to render user’s custom gates. This ensures that users have the flexibility to visualize a wide variety of quantum operations.\n\n\n\nA key update was the incorporation of functionality to visualize classical wires and measurements. Currently, the standard practice of rendering classical wires beneath the qubits has been adopted, although we could add potentially a customization option for user to renderer them above if desired."
-  },
-  {
-    "objectID": "posts/week-2/index.html#issues",
-    "href": "posts/week-2/index.html#issues",
-    "title": "Week#2",
-    "section": "Issues ?",
-    "text": "Issues ?\n\nthe gate size should expand incase of custom text, though I havent found a genralized solution which would across different font families\nincorporation of customization options"
-  },
-  {
-    "objectID": "posts/week-2/index.html#plan-for-next-week",
-    "href": "posts/week-2/index.html#plan-for-next-week",
-    "title": "Week#2",
-    "section": "Plan for next week ?",
-    "text": "Plan for next week ?\n\nadd styling dictionary to gate class\nadd fature to make circuit condense\nmaking a draft PR\ncleaning code further\nfix text sizing issue"
-  },
-  {
-    "objectID": "posts/week-4/index.html",
-    "href": "posts/week-4/index.html",
-    "title": "Week#4",
-    "section": "",
-    "text": "This week has been productive with several key accomplishments in my project:\n\nDraft PR Submission Over the past week, most of time was allocated on code clean up making it more readable, removing uneccesary variables etc.\nFixed Circuit-Wire Labelling One bug discovered was the plotting was of the text labels was getting cut if long name was selected for a wire label, this issue was fixed.\n\n\n\n\n\n\n\nMulti-Qubit Gate with Multiple Control Rendering As discussed in the previous meeting to render the the controls from the center, this was tested on matplotlib renderer. Though, the current LaTeX renderer seems to mess things up with multiple controls.\nCustomization Options Added the option to remove gate bulge and introduced a style argument for overall plotting-styling-related customization.\n\n\n\n\n\n\n\nInclusion of Argumennt in Gate Text: Incase of a gate taking a argument like the rotation gates, the user can display the text directly in the gate label. Also, a feature was included to round it off to the nearest pi-fraction."
-  },
-  {
-    "objectID": "posts/week-4/index.html#what-did-i-do-this-week",
-    "href": "posts/week-4/index.html#what-did-i-do-this-week",
-    "title": "Week#4",
-    "section": "",
-    "text": "This week has been productive with several key accomplishments in my project:\n\nDraft PR Submission Over the past week, most of time was allocated on code clean up making it more readable, removing uneccesary variables etc.\nFixed Circuit-Wire Labelling One bug discovered was the plotting was of the text labels was getting cut if long name was selected for a wire label, this issue was fixed.\n\n\n\n\n\n\n\nMulti-Qubit Gate with Multiple Control Rendering As discussed in the previous meeting to render the the controls from the center, this was tested on matplotlib renderer. Though, the current LaTeX renderer seems to mess things up with multiple controls.\nCustomization Options Added the option to remove gate bulge and introduced a style argument for overall plotting-styling-related customization.\n\n\n\n\n\n\n\nInclusion of Argumennt in Gate Text: Incase of a gate taking a argument like the rotation gates, the user can display the text directly in the gate label. Also, a feature was included to round it off to the nearest pi-fraction."
-  },
-  {
-    "objectID": "posts/week-4/index.html#discussion-points",
-    "href": "posts/week-4/index.html#discussion-points",
-    "title": "Week#4",
-    "section": "Discussion Points",
-    "text": "Discussion Points\nSeveral topics require further discussion to ensure the project’s progress:\n\nAPI Structure for Plotting: Need to finalize the structure for plotting, especially concerning the relocation of LaTeX code. This is crucial as the making of Jupyter notebook tutorial depends on it.\nVertical Height Adjustment: Considering the necessity of adding an automatic vertical height adjustment for gates/wires to support multiline text."
-  },
-  {
-    "objectID": "posts/week-4/index.html#plan-for-next-week",
-    "href": "posts/week-4/index.html#plan-for-next-week",
-    "title": "Week#4",
-    "section": "Plan for Next Week",
-    "text": "Plan for Next Week\nTo build on this week’s achievements, the plan for next week includes:\n\nNext Phase Planning: Start planning the next phase by exploring different possible approaches for ASCII-based rendering.\nPolish the PR: Refine the draft PR based on feedback and further requirements.\nBug Fix: Resolve the issue with connector placement when bulge=0.\nAdd Utility Functions: Enhance the code by adding utility functions."
-  },
-  {
-    "objectID": "posts/week-3/index.html",
-    "href": "posts/week-3/index.html",
-    "title": "Week#3",
-    "section": "",
-    "text": "Given the lack of direct methods to test the correctness of rendered circuits, I had to employ various combinations and scenarios to identify any breaking points in the code or logic. This week, I encountered and resolved two significant issues:\n\nRendering Logic Flaw for Custom Gates with Multiple Control Nodes: I identified a flaw in the rendering logic for custom gates that involved multiple control wires and worked on fixing this issue to ensure proper visualization.\nDynamic Gate Sizing with Text Input: There was a previously mentioned problem with dynamically adjusting gate sizes when text input was involved. This issue has also been resolved, ensuring that gate sizes adjust correctly based on the text they contain.\n\n\n\n\nThe goal for this week was to integrate styling customization with the current gate class and implement the global-dense option to allow users to shrink the size of the circuit.\nCurrently, the gate class accepts a styling dictionary as input with the following customization parameters:\n\ntext: Custom gate label\ncolor: Controls gate background color\nfontsize: Size of the text\nfontcolor: Controls the font color of the text\nfontweight: Controls the weight of the font styles | “bold”, “normal” (default) | custom value\nfontfamily: ‘serif’ | ‘sans-serif’ | ‘cursive’ | ‘fantasy’ | ‘monospace’ (default)\nfontname: Custom font integration (yet to test)\n\nHere is an example of user customization options: \n\n\n\nThe global-dense feature, specified by the condense argument in the MatRenderer class, allows users to shrink the size of the circuit. The images below demonstrate the default setting and the condense = 0.1 setting, respectively:\n \n\n\n\nAnother important improvement was the addition of connectors for multi-qubit gates. In cases where there are multiple targets of a multi-qubit gate, connectors are added to the gate graphic to identify which wire it is connecting to. This ensures clarity, especially when the gate is drawn over wires it is not connected to. Example can be seen in above “BERKELEY” Gate.\n\n\n\n\nAdd option to display gate argument in label\nmultiline row support for gate label\nMake a Draft PR\nNotebook Tutorials\nFind / Fix bugs"
-  },
-  {
-    "objectID": "posts/week-3/index.html#plan-for-next-week",
-    "href": "posts/week-3/index.html#plan-for-next-week",
-    "title": "Week#3",
-    "section": "",
-    "text": "Add option to display gate argument in label\nmultiline row support for gate label\nMake a Draft PR\nNotebook Tutorials\nFind / Fix bugs"
+    "text": "What did I do this week?\nDuring this week, I spent most of my time diving into the QIP repository to understand how everything fits together. I went through the introductory Jupyter notebooks to learn the basics of working with QIP Module, such as using different gates, building circuits, and creating custom gates. Further, got my environment all setuped and focused on understaning the current implementation of the Gate Class and how circuits are visualized using LaTeX.\nTried planning a rough sketch how my code should be sequenced so that its more efficient and clean when merged. In addition to this, I revisited my notes on basics of quantum computing, paying special attention to quantum circuits to solidify my understanding more.\nI also did a introductory meet with my mentors, entire QuTiP team and other GSOC’24 participants @ QuTiP.\n\n\nPlan for next week?\nExperiment more, get a sample of visualization working with jupyter notebook with limited features."
   },
   {
     "objectID": "posts/week-5/index.html",
@@ -196,11 +112,116 @@
     "text": "Plan for Next Week\nLooking ahead, the following tasks are prioritized for the upcoming week:\n\nClean the code, and move latex plotting out of circuit.py\nTransferring LaTeX plotting functionalities out of circuit.py for improved code organization.\nContinuing the implementation and refinement of the text rendering capabilities."
   },
   {
-    "objectID": "posts/community-bond copy/index.html",
-    "href": "posts/community-bond copy/index.html",
-    "title": "Community Bonding",
+    "objectID": "posts/week-3/index.html",
+    "href": "posts/week-3/index.html",
+    "title": "Week#3",
     "section": "",
-    "text": "What did I do this week?\nDuring this week, I spent most of my time diving into the QIP repository to understand how everything fits together. I went through the introductory Jupyter notebooks to learn the basics of working with QIP Module, such as using different gates, building circuits, and creating custom gates. Further, got my environment all setuped and focused on understaning the current implementation of the Gate Class and how circuits are visualized using LaTeX.\nTried planning a rough sketch how my code should be sequenced so that its more efficient and clean when merged. In addition to this, I revisited my notes on basics of quantum computing, paying special attention to quantum circuits to solidify my understanding more.\nI also did a introductory meet with my mentors, entire QuTiP team and other GSOC’24 participants @ QuTiP.\n\n\nPlan for next week?\nExperiment more, get a sample of visualization working with jupyter notebook with limited features."
+    "text": "Given the lack of direct methods to test the correctness of rendered circuits, I had to employ various combinations and scenarios to identify any breaking points in the code or logic. This week, I encountered and resolved two significant issues:\n\nRendering Logic Flaw for Custom Gates with Multiple Control Nodes: I identified a flaw in the rendering logic for custom gates that involved multiple control wires and worked on fixing this issue to ensure proper visualization.\nDynamic Gate Sizing with Text Input: There was a previously mentioned problem with dynamically adjusting gate sizes when text input was involved. This issue has also been resolved, ensuring that gate sizes adjust correctly based on the text they contain.\n\n\n\n\nThe goal for this week was to integrate styling customization with the current gate class and implement the global-dense option to allow users to shrink the size of the circuit.\nCurrently, the gate class accepts a styling dictionary as input with the following customization parameters:\n\ntext: Custom gate label\ncolor: Controls gate background color\nfontsize: Size of the text\nfontcolor: Controls the font color of the text\nfontweight: Controls the weight of the font styles | “bold”, “normal” (default) | custom value\nfontfamily: ‘serif’ | ‘sans-serif’ | ‘cursive’ | ‘fantasy’ | ‘monospace’ (default)\nfontname: Custom font integration (yet to test)\n\nHere is an example of user customization options: \n\n\n\nThe global-dense feature, specified by the condense argument in the MatRenderer class, allows users to shrink the size of the circuit. The images below demonstrate the default setting and the condense = 0.1 setting, respectively:\n \n\n\n\nAnother important improvement was the addition of connectors for multi-qubit gates. In cases where there are multiple targets of a multi-qubit gate, connectors are added to the gate graphic to identify which wire it is connecting to. This ensures clarity, especially when the gate is drawn over wires it is not connected to. Example can be seen in above “BERKELEY” Gate.\n\n\n\n\nAdd option to display gate argument in label\nmultiline row support for gate label\nMake a Draft PR\nNotebook Tutorials\nFind / Fix bugs"
+  },
+  {
+    "objectID": "posts/week-3/index.html#plan-for-next-week",
+    "href": "posts/week-3/index.html#plan-for-next-week",
+    "title": "Week#3",
+    "section": "",
+    "text": "Add option to display gate argument in label\nmultiline row support for gate label\nMake a Draft PR\nNotebook Tutorials\nFind / Fix bugs"
+  },
+  {
+    "objectID": "posts/week-4/index.html",
+    "href": "posts/week-4/index.html",
+    "title": "Week#4",
+    "section": "",
+    "text": "This week has been productive with several key accomplishments in my project:\n\nDraft PR Submission Over the past week, most of time was allocated on code clean up making it more readable, removing uneccesary variables etc.\nFixed Circuit-Wire Labelling One bug discovered was the plotting was of the text labels was getting cut if long name was selected for a wire label, this issue was fixed.\n\n\n\n\n\n\n\nMulti-Qubit Gate with Multiple Control Rendering As discussed in the previous meeting to render the the controls from the center, this was tested on matplotlib renderer. Though, the current LaTeX renderer seems to mess things up with multiple controls.\nCustomization Options Added the option to remove gate bulge and introduced a style argument for overall plotting-styling-related customization.\n\n\n\n\n\n\n\nInclusion of Argumennt in Gate Text: Incase of a gate taking a argument like the rotation gates, the user can display the text directly in the gate label. Also, a feature was included to round it off to the nearest pi-fraction."
+  },
+  {
+    "objectID": "posts/week-4/index.html#what-did-i-do-this-week",
+    "href": "posts/week-4/index.html#what-did-i-do-this-week",
+    "title": "Week#4",
+    "section": "",
+    "text": "This week has been productive with several key accomplishments in my project:\n\nDraft PR Submission Over the past week, most of time was allocated on code clean up making it more readable, removing uneccesary variables etc.\nFixed Circuit-Wire Labelling One bug discovered was the plotting was of the text labels was getting cut if long name was selected for a wire label, this issue was fixed.\n\n\n\n\n\n\n\nMulti-Qubit Gate with Multiple Control Rendering As discussed in the previous meeting to render the the controls from the center, this was tested on matplotlib renderer. Though, the current LaTeX renderer seems to mess things up with multiple controls.\nCustomization Options Added the option to remove gate bulge and introduced a style argument for overall plotting-styling-related customization.\n\n\n\n\n\n\n\nInclusion of Argumennt in Gate Text: Incase of a gate taking a argument like the rotation gates, the user can display the text directly in the gate label. Also, a feature was included to round it off to the nearest pi-fraction."
+  },
+  {
+    "objectID": "posts/week-4/index.html#discussion-points",
+    "href": "posts/week-4/index.html#discussion-points",
+    "title": "Week#4",
+    "section": "Discussion Points",
+    "text": "Discussion Points\nSeveral topics require further discussion to ensure the project’s progress:\n\nAPI Structure for Plotting: Need to finalize the structure for plotting, especially concerning the relocation of LaTeX code. This is crucial as the making of Jupyter notebook tutorial depends on it.\nVertical Height Adjustment: Considering the necessity of adding an automatic vertical height adjustment for gates/wires to support multiline text."
+  },
+  {
+    "objectID": "posts/week-4/index.html#plan-for-next-week",
+    "href": "posts/week-4/index.html#plan-for-next-week",
+    "title": "Week#4",
+    "section": "Plan for Next Week",
+    "text": "Plan for Next Week\nTo build on this week’s achievements, the plan for next week includes:\n\nNext Phase Planning: Start planning the next phase by exploring different possible approaches for ASCII-based rendering.\nPolish the PR: Refine the draft PR based on feedback and further requirements.\nBug Fix: Resolve the issue with connector placement when bulge=0.\nAdd Utility Functions: Enhance the code by adding utility functions."
+  },
+  {
+    "objectID": "posts/week-2/index.html",
+    "href": "posts/week-2/index.html",
+    "title": "Week#2",
+    "section": "",
+    "text": "This week, my primary focus was on refactoring and optimizing the code to ensure better performance and readability. In addition, based on our earlier discussions I came up with a deafult color theme inspired and sampled from QuTiP logo. Color cutomization for gate is also now possible, a new arg. is added to the gate class.\n\n\n\n\n\n\n\n\nOne critical issue addressed was the dynamic sizing of figures when including additional qubit lines. Previously, adding more qubit lines caused the aspect ratio of the visualization to become distorted, leading to uneven or disproportionate representations. This issue has been successfully resolved and figures now maintain a consistent and balanced aspect ratio regardless of the number of qubit lines included.\n\n\n\nSignificant progress was made in terms of the renderer’s adaptability. It now supports nearly all the default gates that QIP offers. Additionally, I extended its capabilities to render user’s custom gates. This ensures that users have the flexibility to visualize a wide variety of quantum operations.\n\n\n\nA key update was the incorporation of functionality to visualize classical wires and measurements. Currently, the standard practice of rendering classical wires beneath the qubits has been adopted, although we could add potentially a customization option for user to renderer them above if desired."
+  },
+  {
+    "objectID": "posts/week-2/index.html#what-did-i-do-this-week",
+    "href": "posts/week-2/index.html#what-did-i-do-this-week",
+    "title": "Week#2",
+    "section": "",
+    "text": "This week, my primary focus was on refactoring and optimizing the code to ensure better performance and readability. In addition, based on our earlier discussions I came up with a deafult color theme inspired and sampled from QuTiP logo. Color cutomization for gate is also now possible, a new arg. is added to the gate class.\n\n\n\n\n\n\n\n\nOne critical issue addressed was the dynamic sizing of figures when including additional qubit lines. Previously, adding more qubit lines caused the aspect ratio of the visualization to become distorted, leading to uneven or disproportionate representations. This issue has been successfully resolved and figures now maintain a consistent and balanced aspect ratio regardless of the number of qubit lines included.\n\n\n\nSignificant progress was made in terms of the renderer’s adaptability. It now supports nearly all the default gates that QIP offers. Additionally, I extended its capabilities to render user’s custom gates. This ensures that users have the flexibility to visualize a wide variety of quantum operations.\n\n\n\nA key update was the incorporation of functionality to visualize classical wires and measurements. Currently, the standard practice of rendering classical wires beneath the qubits has been adopted, although we could add potentially a customization option for user to renderer them above if desired."
+  },
+  {
+    "objectID": "posts/week-2/index.html#issues",
+    "href": "posts/week-2/index.html#issues",
+    "title": "Week#2",
+    "section": "Issues ?",
+    "text": "Issues ?\n\nthe gate size should expand incase of custom text, though I havent found a genralized solution which would across different font families\nincorporation of customization options"
+  },
+  {
+    "objectID": "posts/week-2/index.html#plan-for-next-week",
+    "href": "posts/week-2/index.html#plan-for-next-week",
+    "title": "Week#2",
+    "section": "Plan for next week ?",
+    "text": "Plan for next week ?\n\nadd styling dictionary to gate class\nadd fature to make circuit condense\nmaking a draft PR\ncleaning code further\nfix text sizing issue"
+  },
+  {
+    "objectID": "posts/intro/index.html",
+    "href": "posts/intro/index.html",
+    "title": "I got selected, Yay !",
+    "section": "",
+    "text": "I am thrilled to share that I have been selected for Google Summer of Code (GSoC) 2024 @ QuTiP ! This opportunity is a dream come true, and I am excited to dive into this enriching experience full of learning. This series of blogs will consist of my weekly progress on the project, the hiccups I encounter along the way, how I solve them, and my plans for the upcoming week. In this introductory blog, I will go through the details of the project and objectives."
+  },
+  {
+    "objectID": "posts/intro/index.html#project",
+    "href": "posts/intro/index.html#project",
+    "title": "I got selected, Yay !",
+    "section": "Project",
+    "text": "Project\nThe project I will be working on is titled “QuTiP: Enhancing Quantum Circuit Visualization”.\n\nProblem Statement QuTiP offers a wide range of tools and functions for constructing and manipulating quantum states and operators, including a module for constructing quantum circuits and simulation using basic and custom gates, known as QuTiP-QIP. However, while QuTiP’s circuit visualization capabilities currently rely on LaTeX and ImageMagick to display the circuits, which can be cumbersome for users and require additional dependencies. This project seeks to generate an eye-appealing and accurate circuit rendering module without using external dependency.\nObjectives\n\nDevelop Matplotlib based Renderer\nDevelop an ASCII text-based rendering module for command-line interactions\nImplementing a Circuit Renderer Selector between multiple rendering options\n\nMentors\n\nBoxi Li\nNeill Lambert\nAlex Pitchford\nSimon Cross"
+  },
+  {
+    "objectID": "posts/intro/index.html#why-the-project-matters",
+    "href": "posts/intro/index.html#why-the-project-matters",
+    "title": "I got selected, Yay !",
+    "section": "Why the project matters ?",
+    "text": "Why the project matters ?\nThis project is important because it addresses the usability challenges faced by QuTiP users when visualizing quantum circuits. By eliminating the need for external dependencies such as LaTeX and ImageMagick, the new rendering modules will simplify the installation and setup process for users. This will make QuTiP more accessible and user-friendly, particularly for those who may not be familiar with setting up these additional tools.\nAdditionally, the introduction of a Matplotlib-based renderer will enhance the visual appeal of quantum circuit diagrams, making it easier for researchers and developers to interpret and share their work. The ASCII text-based renderer will provide a lightweight and efficient option for command-line interactions, ensuring that users have a versatile set of tools to suit their different working environments.\nBy providing a Circuit Renderer Selector, users will have the flexibility to choose the most suitable rendering method for their needs, enhancing their overall experience with QuTiP. Ultimately, this project will enable users to visualize quantum circuits more efficiently and effectively, facilitating better understanding and communication of quantum algorithms and operations."
+  },
+  {
+    "objectID": "posts/week-12/index.html",
+    "href": "posts/week-12/index.html",
+    "title": "Week#12",
+    "section": "",
+    "text": "This week brought significant progress with the successful merging of the BaseRenderer for unified rendering logic. We ensured full compatibility of both MatRenderer and TextRenderer with the new BaseRenderer, streamlining our codebase. Explored test cases option for MatRenderer."
+  },
+  {
+    "objectID": "posts/week-12/index.html#this-week",
+    "href": "posts/week-12/index.html#this-week",
+    "title": "Week#12",
+    "section": "This Week",
+    "text": "This Week\n\nMerged BaseRenderer\nThe BaseRenderer was successfully merged into the main branch. This merger is a major step towards unifying the rendering logic, making it easier to maintain and extend in future updates.\nCompatibility of other Renderers with BaseRenderer\nSignificant work was done to ensure that both MatRenderer and TextRenderer are fully compatible with the newly integrated BaseRenderer. This effort involved revisiting the existing code, refactoring where necessary, and ensuring that all features work seamlessly across different rendering contexts.\nAdded more test cases\nTo ensure the robustness of the recent changes, additional test cases were written and integrated into our test suite. These tests cover a wide range of scenarios, ensuring that the BaseRenderer, along with its compatible renderers, performs as expected across various use cases.\nExplored Different Test Cases for MatRenderer\nWe investigated various methods for testing matplotlib-plotted figures. Three main approaches were considered:\n\nJust Check for Errors:\nSimply execute the plotting code and pass the test if no errors or warnings are raised. This is the bare minimum test we can perform.\nImage Comparison:\nSave a correct plot and compare the generated plot against it, allowing for some inaccuracy using matplotlib testing function’s fetaure tolerance. Negatives of storing multiple images, dimension challenges, extension challenges.\nManual Comparison:\nCompare the generated plot with manually constructed ones using matplotlib’s low-level interfaces like patches and draw lines."
+  },
+  {
+    "objectID": "posts/week-12/index.html#plan-for-next-week",
+    "href": "posts/week-12/index.html#plan-for-next-week",
+    "title": "Week#12",
+    "section": "Plan for Next Week",
+    "text": "Plan for Next Week\n\nIncorporate the suggested improvements into the Draft PR\nMake Progress on Notebook\nAdd Documentation in the same PR\nAdd test cases for MatRenderer to improve coverage"
   },
   {
     "objectID": "posts/week-1/index.html",
@@ -277,6 +298,6 @@
     "href": "index.html",
     "title": "My GSOC Blogs",
     "section": "",
-    "text": "Week#11\n\n\n\n\n\n\n\n\n\n\n\nAug 8, 2024\n\n\nRushiraj Gadhvi\n\n\n\n\n\n\n\n\n\n\n\n\nWeek#10\n\n\n\n\n\n\n\n\n\n\n\nAug 1, 2024\n\n\nRushiraj Gadhvi\n\n\n\n\n\n\n\n\n\n\n\n\nWeek#9\n\n\n\n\n\n\n\n\n\n\n\nJul 25, 2024\n\n\nRushiraj Gadhvi\n\n\n\n\n\n\n\n\n\n\n\n\nWeek#8\n\n\n\n\n\n\n\n\n\n\n\nJul 18, 2024\n\n\nRushiraj Gadhvi\n\n\n\n\n\n\n\n\n\n\n\n\nHalfway! Week#6-7\n\n\n\n\n\n\n\n\n\n\n\nJul 10, 2024\n\n\nRushiraj Gadhvi\n\n\n\n\n\n\n\n\n\n\n\n\nWeek#5\n\n\n\n\n\n\n\n\n\n\n\nJun 27, 2024\n\n\nRushiraj Gadhvi\n\n\n\n\n\n\n\n\n\n\n\n\nWeek#4\n\n\n\n\n\n\n\n\n\n\n\nJun 21, 2024\n\n\nRushiraj Gadhvi\n\n\n\n\n\n\n\n\n\n\n\n\nWeek#3\n\n\n\n\n\n\n\n\n\n\n\nJun 13, 2024\n\n\nRushiraj Gadhvi\n\n\n\n\n\n\n\n\n\n\n\n\nWeek#2\n\n\n\n\n\n\n\n\n\n\n\nJun 9, 2024\n\n\nRushiraj Gadhvi\n\n\n\n\n\n\n\n\n\n\n\n\nCoding Begins! Week#1\n\n\n\n\n\n\n\n\n\n\n\nJun 1, 2024\n\n\nRushiraj Gadhvi\n\n\n\n\n\n\n\n\n\n\n\n\nCommunity Bonding\n\n\n\n\n\n\n\n\n\n\n\nMay 25, 2024\n\n\nRushiraj Gadhvi\n\n\n\n\n\n\n\n\n\n\n\n\nI got selected, Yay !\n\n\n\n\n\n\n\n\n\n\n\nMay 16, 2024\n\n\nRushiraj Gadhvi\n\n\n\n\n\n\nNo matching items"
+    "text": "Week#12\n\n\n\n\n\n\n\n\n\n\n\nAug 16, 2024\n\n\nRushiraj Gadhvi\n\n\n\n\n\n\n\n\n\n\n\n\nWeek#11\n\n\n\n\n\n\n\n\n\n\n\nAug 8, 2024\n\n\nRushiraj Gadhvi\n\n\n\n\n\n\n\n\n\n\n\n\nWeek#10\n\n\n\n\n\n\n\n\n\n\n\nAug 1, 2024\n\n\nRushiraj Gadhvi\n\n\n\n\n\n\n\n\n\n\n\n\nWeek#9\n\n\n\n\n\n\n\n\n\n\n\nJul 25, 2024\n\n\nRushiraj Gadhvi\n\n\n\n\n\n\n\n\n\n\n\n\nWeek#8\n\n\n\n\n\n\n\n\n\n\n\nJul 18, 2024\n\n\nRushiraj Gadhvi\n\n\n\n\n\n\n\n\n\n\n\n\nHalfway! Week#6-7\n\n\n\n\n\n\n\n\n\n\n\nJul 10, 2024\n\n\nRushiraj Gadhvi\n\n\n\n\n\n\n\n\n\n\n\n\nWeek#5\n\n\n\n\n\n\n\n\n\n\n\nJun 27, 2024\n\n\nRushiraj Gadhvi\n\n\n\n\n\n\n\n\n\n\n\n\nWeek#4\n\n\n\n\n\n\n\n\n\n\n\nJun 21, 2024\n\n\nRushiraj Gadhvi\n\n\n\n\n\n\n\n\n\n\n\n\nWeek#3\n\n\n\n\n\n\n\n\n\n\n\nJun 13, 2024\n\n\nRushiraj Gadhvi\n\n\n\n\n\n\n\n\n\n\n\n\nWeek#2\n\n\n\n\n\n\n\n\n\n\n\nJun 9, 2024\n\n\nRushiraj Gadhvi\n\n\n\n\n\n\n\n\n\n\n\n\nCoding Begins! Week#1\n\n\n\n\n\n\n\n\n\n\n\nJun 1, 2024\n\n\nRushiraj Gadhvi\n\n\n\n\n\n\n\n\n\n\n\n\nCommunity Bonding\n\n\n\n\n\n\n\n\n\n\n\nMay 25, 2024\n\n\nRushiraj Gadhvi\n\n\n\n\n\n\n\n\n\n\n\n\nI got selected, Yay !\n\n\n\n\n\n\n\n\n\n\n\nMay 16, 2024\n\n\nRushiraj Gadhvi\n\n\n\n\n\n\nNo matching items"
   }
 ]
