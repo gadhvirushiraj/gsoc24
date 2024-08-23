@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/final-report/index.html",
       "/posts/week-12/index.html",
       "/posts/week-11/index.html",
       "/posts/week-10/index.html",
@@ -13,7 +14,7 @@
       "/posts/week-3/index.html",
       "/posts/week-2/index.html",
       "/posts/week-1/index.html",
-      "/posts/community-bond copy/index.html",
+      "/posts/community-bond/index.html",
       "/posts/intro/index.html"
     ]
   }
