@@ -1,0 +1,19 @@
+---
+title: "Community Bonding"
+author: "Rushiraj Gadhvi"
+date: "2024-05-25"
+categories: [gsoc, qutip]
+image: "thumb.png"
+---
+
+# What did I do this week?
+
+During this week, I spent most of my time diving into the QIP repository to understand how everything fits together. I went through the introductory Jupyter notebooks to learn the basics of working with QIP Module, such as using different gates, building circuits, and creating custom gates. Further, got my environment all setuped and focused on understaning the current implementation of the Gate Class and how circuits are visualized using LaTeX. 
+
+Tried planning a rough sketch how my code should be sequenced so that its more efficient and clean when merged. In addition to this, I revisited my notes on basics of quantum computing, paying special attention to quantum circuits to solidify my understanding more.
+
+I also did a introductory meet with my mentors, entire QuTiP team and other GSOC'24 participants @ QuTiP.
+
+# Plan for next week?
+
+Experiment more, get a sample of visualization working with jupyter notebook with limited features.
