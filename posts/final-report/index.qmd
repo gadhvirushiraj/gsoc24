@@ -1,0 +1,160 @@
+---
+title: "Final Report"
+author: "Rushiraj Gadhvi"
+date: "2024-08-23 "
+from: markdown+emoji
+categories: [gsoc, qutip, report]
+image: "qutip_gsoc.jpg"
+---
+
+
+## Project Description
+
+The project aims to improve the quantum circuit visualization capabilities of QuTiP-QIP by introducing a new framework for circuit rendering that doesn't rely on external dependencies. Presently, circuit visualization relies on LaTeX and ImageMagick, which can be problematic for users. This solution plans to create two rendering modules: one utilizing matplotlib for visually appealing and precise quantum circuit diagrams, and another ASCII text-based rendering. The matplotlib renderer will also support generating circuit visualizations within IPython environments like Jupyter Notebook, while the text-based renderer will cater to command-line interactions. Apart from the rendering modules a Circuit Renderer Selector will also be included in the project deliverables, enabling users to easily choose their preferred rendering method among LaTeX, Matplotlib, or Text-Based options. These tools will enable users to visualize quantum circuits more efficiently and effectively, making it easier to work with QuTiP.
+
+Mentors: Boxi Li, Alex Pitchford, Neill Lambert
+
+## Deliverables
+
+- [x] Matplotlib Based Renderer
+- [x] Text Based Renderer
+- [x] Draw API
+- [x] Tutorial Notebooks
+
+## Contributions
+
+*The following sections review all the contributions made to the project during the GSoC '24 coding period.*
+
+
+#### **BaseRenderer**
+
+The BaseRenderer was designed as a parent class to improve the maintainability of newly added renderers and to establish a robust framework for incorporating future renderers. By employing a layered approach, it optimizes the compactness of quantum circuits, dynamically adjusting the layout as each gate is added. This method ensures efficient space management and enhances the clarity of complex quantum operations.
+
+Furthermore, the BaseRenderer acts as a central hub for styling configurations through the `StyleConfig` class. This dataclass consolidates all customization settings, enabling consistent and streamlined styling across different renderers.
+
+---
+
+*Next, we will delve into the details of the two newly added renderers.*
+
+#### **MatRenderer** 
+
+A Matplotlib-based renderer was developed to plot complex quantum circuits, providing numerous customization options so users can adjust their circuits to meet specific needs. The features of the renderer were designed to ensure precise information delivery while maintaining visually appealing diagrams. We also prioritized compactness, arranging the circuit layout to be as optimal while maintaing the information delivery.
+
+
+**Example of Results**
+
+![QuTiP-QIP default color-theme](mat_example1.png){height=200 fig-align="center"}
+
+![Layer Alignment Customization and Argument Display Option](mat_example3.png){height=180 fig-align="center"}
+
+![Gate Bulge Customization and MultiQubit Gate Connectors for better Information Delivery](mat_example4.png){fig-align="center"}
+
+![Dark color-theme](mat_example2.png){fig-align="center"}
+
+
+---
+
+
+**Further Details about MatRenderer**
+
+The MatRenderer offers four distinct color themes: `qutip`, `dark`, `light`, and `modern`. Users can personalize these themes further through styling configurations. They can also choose between the modern `bulge` style and the classic `box` style for gate appearances. The renderer enhances clarity with connectors for MultiQubit Gates and an option to display arguments.
+
+MatRenderer also provides extensive customization options. Users can adjust wire labeling, background color, font family, font size, and more, creating a highly personalized and visually appealing representation of quantum circuits.
+
+---
+
+#### **TextRenderer** 
+
+Nowadays, most users rely on Matplotlib. However, users who interact with libraries through the terminal require a different type of renderer. TextRender is ideal for those using the terminal or for quick circuit checks to ensure the library correctly interprets their intentions. The TextRenderer has fewer customization options compared to the MatRenderers, but it still provides some level of customization.
+
+**Example of Results**
+
+```r
+        ┌──────┐  ┌──────┐  ┌───────┐  ┌───┐   
+ q1 :───┤ CNOT ├──┤ SNOT ├──┤       ├──┤ M ├───
+        └───┬──┘  └──────┘  │       │  └─╥─┘   
+            │               │       │    ║     
+ q0 :───────▇───────────────┤ ISWAP ├────║─────
+                            └───────┘    ║     
+                                         ║     
+ c0 :════════════════════════════════════╩═════
+                                               
+```
+
+Layer Alignment Customization
+
+```r
+        ┌────┐  ┌────┐  ┌────┐                    
+ q2 :───┤ RZ ├──┤ RZ ├──┤ RX ├───────────────╳────
+        └────┘  └────┘  └────┘               │    
+        ┌───┐   ┌────┐  ┌──────┐  ┌──────┐   │    
+ q1 :───┤ H ├───┤ RX ├──┤ CNOT ├──┤ CNOT ├───│────
+        └───┘   └────┘  └───┬──┘  └───┬──┘   │    
+        ┌────┐              │         │      │    
+ q0 :───┤ RX ├──────────────▇─────────▇──────╳────
+        └────┘                                    
+```
+
+Skips drawing a connection line for wires that are not directly involved in a MultiQubit Gate.
+```r
+                                        ┌──────────┐                                                         
+ q3 :───────────────────────────────╳───┤          ├───────▇─────────────────────────╳────╳──────────────────
+                                    │   │          │       │                         │    │                  
+        ┌───┐                       │   │          │  ┌────┴────┐                    │    │                  
+ q2 :───┤ X ├───────────────────────│── │          │ ─┤         ├────────────────────│────│──────────────────
+        └───┘                       │   │          │  │         │                    │    │                  
+        ┌───┐            ┌──────┐   │   │          │  │         │  ┌────┐  ┌─────┐   │    │          ┌───┐   
+ q1 :───┤ H ├──────▇─────┤ CNOT ├───│── │          │ ─┤ FREDKIN ├──┤ CX ├──┤ CRX ├───│────│──────────┤ M ├───
+        └───┘      │     └───┬──┘   │   │          │  └─────────┘  └──┬─┘  └──┬──┘   │    │          └─╥─┘   
+        ┌───┐  ┌───┴──┐      │      │   │          │                  │       │      │    │   ┌───┐    ║     
+ q0 :───┤ H ├──┤ CNOT ├──────▇──────╳───┤ BERKELEY ├──────────────────▇───────▇──────╳────╳───┤ M ├────║─────
+        └───┘  └──────┘                 └──────────┘                                          └─╥─┘    ║     
+                                                                                                ║      ║     
+ c1 :═══════════════════════════════════════════════════════════════════════════════════════════║══════╩═════
+                                                                                                ║            
+                                                                                                ║            
+ c0 :═══════════════════════════════════════════════════════════════════════════════════════════╩════════════
+
+```
+
+Complex Circuit
+
+```r
+                                                                                                                    ┌──────┐          ┌──────┐  ┌────┐  ┌──────┐          ┌──────┐  ┌────┐   
+ q3 :───────────────────────────────────────────────────────────────────────────────────────────────────────────────┤ CNOT ├──────────┤ CNOT ├──┤ RZ ├──┤ CNOT ├──────────┤ CNOT ├──┤ RZ ├───
+                                                                                                                    └───┬──┘          └───┬──┘  └────┘  └───┬──┘          └───┬──┘  └────┘   
+                                            ┌──────┐          ┌──────┐  ┌────┐  ┌──────┐          ┌──────┐  ┌────┐      │                 │                 │                 │              
+ q2 :───────────────────────────────────────┤ CNOT ├──────────┤ CNOT ├──┤ RZ ├──┤ CNOT ├──────────┤ CNOT ├──┤ RZ ├──────│─────────────────│─────────────────│─────────────────│──────────────
+                                            └───┬──┘          └───┬──┘  └────┘  └───┬──┘          └───┬──┘  └────┘      │                 │                 │                 │              
+        ┌────┐  ┌──────┐          ┌──────┐      │                 │                 │                 │                 │     ┌────┐      │                 │     ┌────┐      │              
+ q1 :───┤ RZ ├──┤ CNOT ├──────────┤ CNOT ├──────│─────────────────│─────────────────│─────────────────│─────────────────▇─────┤ RX ├──────▇─────────────────▇─────┤ RY ├──────▇──────────────
+        └────┘  └───┬──┘          └───┬──┘      │                 │                 │                 │                       └────┘                              └────┘                     
+        ┌────┐      │     ┌────┐      │         │     ┌────┐      │                 │     ┌────┐      │                                                                                      
+ q0 :───┤ RZ ├──────▇─────┤ RX ├──────▇─────────▇─────┤ RX ├──────▇─────────────────▇─────┤ RY ├──────▇──────────────────────────────────────────────────────────────────────────────────────
+        └────┘            └────┘                      └────┘                              └────┘                                                                                             
+
+```
+
+---
+
+
+## Pull Requests
+
+| Pull Requests                                       | Link                                                    | Status                    |
+|-----------------------------------------------------|---------------------------------------------------------|-------------------------- |
+| MatRenderer                                         | [🔗](https://github.com/qutip/qutip-qip/pull/239)       | Merged                    |
+| Shifting LaTeX Code and Fixing Draw API             | [🔗](https://github.com/qutip/qutip-qip/pull/241)       | Merged                    |
+| TextRenderer + BaseRenderer + Tests + Documentation | [🔗](https://github.com/qutip/qutip-qip/pull/244)       | Final Changes Ongoing     |
+| Tutorial Notebooks                                  | [🔗](https://github.com/qutip/qutip-tutorials/pull/102) | Awaiting Review           |
+
+## Future Work
+
+- Update LaTeX Renderer to adopt the BaseRenderer layer system, simplifying maintenance.
+- Imporving test cases to thoroughly evaluate and verify MatRenderer outputs.
+- Devlopment of no-code GUI for quantum circuits to make the library more accessible to a wider audience.
+
+## Final Thoughts
+
+This summer has been an incredible experience, as it marked my first time contributing to open source. I was thrilled to be selected for a project that aligned perfectly with my passion for both development and design. My previous experience with Quantum Circuits turned out to be a valuable asset and the project has sparked a strong interest in Quantum Computing.
+
+Being part of this project has been a rewarding experience, allowing me to contribute to something meaningful. I loved being a part of the QuTiP community and am committed to continuing my contributions to the QIP package after GSOC. I am grateful to have had such amazing mentors who guided me throughout the process. I feel fortunate to have worked on a project that ignited my interests and provided opportunities for both personal and professional growth, challenging me to become a better developer.
