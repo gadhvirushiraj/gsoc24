@@ -7,12 +7,13 @@ categories: [gsoc, qutip, report]
 image: "qutip_gsoc.jpg"
 ---
 
+![](./qutip_gsoc.jpg){width=400 fig-align="center"}
 
 ## Project Description
 
 The project aims to improve the quantum circuit visualization capabilities of QuTiP-QIP by introducing a new framework for circuit rendering that doesn't rely on external dependencies. Presently, circuit visualization relies on LaTeX and ImageMagick, which can be problematic for users. This solution plans to create two rendering modules: one utilizing matplotlib for visually appealing and precise quantum circuit diagrams, and another ASCII text-based rendering. The matplotlib renderer will also support generating circuit visualizations within IPython environments like Jupyter Notebook, while the text-based renderer will cater to command-line interactions. Apart from the rendering modules a Circuit Renderer Selector will also be included in the project deliverables, enabling users to easily choose their preferred rendering method among LaTeX, Matplotlib, or Text-Based options. These tools will enable users to visualize quantum circuits more efficiently and effectively, making it easier to work with QuTiP.
 
-Mentors: Boxi Li, Alex Pitchford, Neill Lambert
+**Mentors**: Boxi Li, Alex Pitchford, Neill Lambert
 
 ## Deliverables
 
@@ -67,7 +68,11 @@ MatRenderer also provides extensive customization options. Users can adjust wire
 
 Nowadays, most users rely on Matplotlib. However, users who interact with libraries through the terminal require a different type of renderer. TextRender is ideal for those using the terminal or for quick circuit checks to ensure the library correctly interprets their intentions. The TextRenderer has fewer customization options compared to the MatRenderers, but it still provides some level of customization.
 
+
+
 **Example of Results**
+
+*Note: Text Rendered circuit may get distorted in HTML rendering.*
 
 ```r
         ┌──────┐  ┌──────┐  ┌───────┐  ┌───┐   
@@ -138,7 +143,7 @@ Complex Circuit
 ---
 
 
-## Pull Requests
+## Code
 
 | Pull Requests                                       | Link                                                    | Status                    |
 |-----------------------------------------------------|---------------------------------------------------------|-------------------------- |
@@ -151,7 +156,7 @@ Complex Circuit
 
 - Update LaTeX Renderer to adopt the BaseRenderer layer system, simplifying maintenance.
 - Imporving test cases to thoroughly evaluate and verify MatRenderer outputs.
-- Devlopment of no-code GUI for quantum circuits to make the library more accessible to a wider audience.
+- Development of no-code GUI for quantum circuits to make the library more accessible to a wider audience.
 
 ## Final Thoughts
 
