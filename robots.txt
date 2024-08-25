@@ -1,1 +1,1 @@
-Sitemap: https://gadhvirushiraj.github.io/blogs/sitemap.xml
+Sitemap: https://gadhvirushiraj.github.io/gsoc24/sitemap.xml
