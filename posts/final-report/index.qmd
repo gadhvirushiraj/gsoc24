@@ -22,10 +22,11 @@ The project aims to improve the quantum circuit visualization capabilities of Qu
 - [x] Draw API
 - [x] Tutorial Notebooks
 
-## Contributions
+## Contributions 
+
+#### **Weekly Progress Documented Here:** [*Weekly Blogs 🔗*](https://gadhvirushiraj.github.io/gsoc24/)
 
 *The following sections review all the contributions made to the project during the GSoC '24 coding period.*
-
 
 #### **BaseRenderer**
 
